@@ -1,0 +1,49 @@
+import { useState } from 'react'
+import { prompts } from '../data/prompts'
+import PromptStep from '../components/PromptStep'
+import ProgressBar from '../components/ProgressBar'
+
+export default function AuditFlow({ platformId, tier, onComplete, onFinding }) {
+  const tierPrompts = prompts.filter((p) => p.tier <= tier)
+  const [stepIndex, setStepIndex] = useState(0)
+
+  const currentPrompt = tierPrompts[stepIndex]
+  const isLast = stepIndex === tierPrompts.length - 1
+
+  function handleResult(level) {
+    onFinding({
+      promptId: currentPrompt.id,
+      level,
+      note: '',
+    })
+
+    if (isLast) {
+      onComplete()
+    } else {
+      setStepIndex((i) => i + 1)
+    }
+  }
+
+  if (!currentPrompt) return null
+
+  return (
+    <div className="space-y-6">
+      <div>
+        <p className="text-sm text-slate-500 mb-2">
+          Prompt {stepIndex + 1} of {tierPrompts.length}
+          {tier === 1 && ' (Quick Check)'}
+          {tier === 2 && ' (Full Audit)'}
+          {tier === 3 && ' (Deep Dig)'}
+        </p>
+        <ProgressBar current={stepIndex + 1} total={tierPrompts.length} />
+      </div>
+
+      <PromptStep
+        key={currentPrompt.id}
+        prompt={currentPrompt}
+        platformId={platformId}
+        onResult={handleResult}
+      />
+    </div>
+  )
+}
