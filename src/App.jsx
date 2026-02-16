@@ -1,4 +1,5 @@
 import Layout from './components/Layout'
+import WizardNav from './components/WizardNav'
 import Landing from './pages/Landing'
 import PlatformPicker from './pages/PlatformPicker'
 import AuditFlow from './pages/AuditFlow'
@@ -40,6 +41,16 @@ function App() {
     wizard.next()
   }
 
+  function handleStartOver() {
+    audit.reset()
+    wizard.reset()
+  }
+
+  function handleCheckAnother() {
+    audit.reset()
+    wizard.goTo('platform')
+  }
+
   const page = {
     landing: <Landing onStart={() => wizard.next()} />,
     platform: <PlatformPicker onSelect={handlePlatformSelect} />,
@@ -79,12 +90,20 @@ function App() {
         records={audit.records}
         findings={audit.findings}
         auditStartTime={audit.auditStartTime}
+        onCheckAnother={handleCheckAnother}
+        onStartOver={handleStartOver}
       />
     ),
   }
 
   return (
     <Layout elevatedCrisis={audit.severity === 'red'}>
+      <WizardNav
+        currentStep={wizard.currentStep}
+        canGoBack={wizard.canGoBack}
+        onBack={wizard.back}
+        onStartOver={handleStartOver}
+      />
       {page[wizard.currentStep]}
     </Layout>
   )

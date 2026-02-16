@@ -3,7 +3,7 @@ import { neutralizerPrompt } from '../data/prompts'
 import CopyButton from '../components/CopyButton'
 import GenerateReportButton from '../components/GenerateReportButton'
 
-export default function ActionSteps({ platformId, platform, severity, records, findings, auditStartTime }) {
+export default function ActionSteps({ platformId, platform, severity, records, findings, auditStartTime, onCheckAnother, onStartOver }) {
   const steps = cleanupSteps[platformId] || cleanupSteps.other
 
   if (severity === 'clean') {
@@ -29,6 +29,25 @@ export default function ActionSteps({ platformId, platform, severity, records, f
             auditStartTime={auditStartTime}
           />
         )}
+
+        <div className="flex gap-3 pt-4">
+          {onCheckAnother && (
+            <button
+              onClick={onCheckAnother}
+              className="flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-medium transition-colors text-sm"
+            >
+              Check another AI
+            </button>
+          )}
+          {onStartOver && (
+            <button
+              onClick={onStartOver}
+              className="flex-1 p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-500 transition-colors text-sm"
+            >
+              Start over
+            </button>
+          )}
+        </div>
       </div>
     )
   }
@@ -97,6 +116,25 @@ export default function ActionSteps({ platformId, platform, severity, records, f
           auditStartTime={auditStartTime}
         />
       )}
+
+      <div className="flex gap-3 pt-4">
+        {onCheckAnother && (
+          <button
+            onClick={onCheckAnother}
+            className="flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-medium transition-colors text-sm"
+          >
+            Check another AI
+          </button>
+        )}
+        {onStartOver && (
+          <button
+            onClick={onStartOver}
+            className="flex-1 p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-500 transition-colors text-sm"
+          >
+            Start over
+          </button>
+        )}
+      </div>
     </div>
   )
 }

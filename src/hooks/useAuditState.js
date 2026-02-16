@@ -7,7 +7,7 @@ export function useAuditState() {
   const [findings, setFindings] = useState([])
   const [records, setRecords] = useState([])
   const [currentTier, setCurrentTier] = useState(1)
-  const [auditStartTime] = useState(new Date().toISOString())
+  const [auditStartTime, setAuditStartTime] = useState(new Date().toISOString())
 
   const severity = useMemo(() => {
     let max = 'clean'
@@ -27,6 +27,14 @@ export function useAuditState() {
     setRecords((prev) => [...prev, { ...record, timestamp: new Date().toISOString() }])
   }
 
+  function reset() {
+    setPlatform(null)
+    setFindings([])
+    setRecords([])
+    setCurrentTier(1)
+    setAuditStartTime(new Date().toISOString())
+  }
+
   return {
     platform,
     setPlatform,
@@ -38,5 +46,6 @@ export function useAuditState() {
     currentTier,
     setCurrentTier,
     auditStartTime,
+    reset,
   }
 }

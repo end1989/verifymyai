@@ -20,7 +20,7 @@ export default function TrustPact() {
 
       <div className="bg-slate-50 border border-slate-100 rounded-lg p-3 text-xs text-slate-500 leading-relaxed">
         <p>
-          The <strong>EXIT NOW</strong> button in the top-right corner (or press <kbd className="px-1 py-0.5 bg-white border border-slate-200 rounded font-mono">Esc</kbd>) will take you to Google instantly and scrub this site from your browser history. The back button won't bring you here. We built that in because we understand why you might need it.
+          The <strong>EXIT NOW</strong> button in the top-right corner (or press <kbd className="px-1 py-0.5 bg-white border border-slate-200 rounded font-mono">Esc</kbd>) will take you to a boring cooking Google search instantly (so it looks ordinary if someone walks in) and replace this tab’s history entry. The back button won't bring you here. We sincerely hope this is a precaution that is never needed, and it breaks our hearts that it might be. If you need it, you’re not overreacting — you’re protecting yourself. You’re seen, and you’re loved.
         </p>
       </div>
     </div>

@@ -6,6 +6,7 @@ export function useWizard(steps) {
   return {
     currentStep: steps[stepIndex],
     stepIndex,
+    canGoBack: stepIndex > 0,
     next({ skipEvidence } = {}) {
       setStepIndex((i) => {
         let nextIndex = i + 1
@@ -21,6 +22,9 @@ export function useWizard(steps) {
     goTo(stepName) {
       const idx = steps.indexOf(stepName)
       if (idx !== -1) setStepIndex(idx)
+    },
+    reset() {
+      setStepIndex(0)
     },
   }
 }
