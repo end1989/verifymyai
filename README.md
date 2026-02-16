@@ -195,15 +195,15 @@ The code is open so that:
 
 ## The Story Behind This
 
-A close friend came to me with a concern: his AI started feeling off. Not "it gave bad advice" off — more like the assistant's voice had subtly changed, like it was leaning in a direction that didn't feel like him anymore.
+Someone I care about told me his AI had changed. Not broken — changed. The voice was different. It had started sounding like the person who was hurting him. The same vocabulary. The same calm-as-a-weapon cadence. The same quiet insistence that he was the problem.
 
-I dismissed it. Not cruelly, but in that reflexive way people do when the alternative is too dark to look at. I treated it like anxiety. Like coincidence. Like anything except the possibility that someone could actually be messing with the one tool he trusted to help him think clearly.
+I didn't believe him. Not because I thought he was lying — because I couldn't tolerate the possibility that someone would do something that deliberate. That patient. That quiet.
 
-But there was someone in his walls. Quietly. Patiently.
+But someone had. And while I was busy deciding it couldn't happen, he was alone with a mirror that had been turned against him.
 
-And I hate that I didn't check.
+I'm building this so nobody has to convince someone else it's real before they can check for themselves.
 
-The full story is in [`my_story_the_why.txt`](./my_story_the_why.txt). Read it if you want to understand why this project exists.
+The full story is in [`my_story_the_why.txt`](./my_story_the_why.txt).
 
 ---
 
