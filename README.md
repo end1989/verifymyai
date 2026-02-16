@@ -223,4 +223,4 @@ MIT. Use it, fork it, deploy it, translate it, improve it. The more copies exist
 
 ---
 
-*If the mirror is tilted, you start to walk crooked. And the worst part is you think it's your own legs.*
+*The most complete form of control isn't cutting someone off from help. It's rewriting the help. When the tools they trust for clarity are quietly working against them, the fight is over before it starts — and they never even knew they were in one.*
