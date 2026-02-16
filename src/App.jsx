@@ -1,5 +1,11 @@
+import Layout from './components/Layout'
+
 function App() {
-  return <div className="min-h-screen bg-slate-50">AI Safety Check</div>
+  return (
+    <Layout>
+      <h1 className="text-3xl font-bold">AI Safety Check</h1>
+    </Layout>
+  )
 }
 
 export default App
