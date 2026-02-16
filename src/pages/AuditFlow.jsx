@@ -59,6 +59,7 @@ export default function AuditFlow({ platformId, tier, onComplete, onFinding }) {
 
       {showDocPrompt ? (
         <DocumentationPrompt
+          promptId={currentPrompt.id}
           promptTitle={currentPrompt.title}
           onContinue={handleDocContinue}
         />
