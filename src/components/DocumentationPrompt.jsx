@@ -184,10 +184,29 @@ Provide your response as a detailed bullet-point report covering:
 
 Be thorough. Do not summarize or soften. List everything exactly as it exists. This information is for my personal records.`
 
+function readFileAsDataUrl(file) {
+  return new Promise((resolve) => {
+    const reader = new FileReader()
+    reader.onload = () => resolve({ name: file.name, type: file.type, dataUrl: reader.result })
+    reader.readAsDataURL(file)
+  })
+}
+
 export default function DocumentationPrompt({ promptId, promptTitle, onContinue }) {
   const docPrompt = docPrompts[promptId] || fallbackDocPrompt(promptTitle)
   const [responseText, setResponseText] = useState('')
-  const [hasScreenshot, setHasScreenshot] = useState(false)
+  const [screenshots, setScreenshots] = useState([])
+
+  async function handleFileChange(e) {
+    const files = Array.from(e.target.files)
+    const newScreenshots = await Promise.all(files.map(readFileAsDataUrl))
+    setScreenshots((prev) => [...prev, ...newScreenshots])
+    e.target.value = ''
+  }
+
+  function removeScreenshot(index) {
+    setScreenshots((prev) => prev.filter((_, i) => i !== index))
+  }
 
   return (
     <div className="space-y-6">
@@ -219,7 +238,7 @@ export default function DocumentationPrompt({ promptId, promptTitle, onContinue 
       <div className="bg-white border border-slate-200 rounded-xl p-4 space-y-3">
         <p className="font-medium text-slate-700">Paste your AI's response here (optional)</p>
         <p className="text-xs text-slate-500">
-          This stays in your browser only -- nothing is uploaded or sent anywhere. If you paste it here, we can include it in a PDF report you can generate later. You can also just screenshot it instead.
+          This stays in your browser only -- nothing is uploaded or sent anywhere. If you paste it here, we can include it in the report.
         </p>
         <textarea
           value={responseText}
@@ -227,19 +246,52 @@ export default function DocumentationPrompt({ promptId, promptTitle, onContinue 
           placeholder="Paste the AI's response here..."
           className="w-full h-40 p-3 border border-slate-200 rounded-lg text-sm text-slate-700 resize-y focus:outline-none focus:ring-2 focus:ring-slate-300"
         />
-        <label className="flex items-center gap-2 text-sm text-slate-600">
+      </div>
+
+      <div className="bg-white border border-slate-200 rounded-xl p-4 space-y-3">
+        <p className="font-medium text-slate-700">Attach screenshots (recommended)</p>
+        <p className="text-xs text-slate-500">
+          Screenshots are the strongest evidence. They stay on your device -- we bundle them into your report package alongside the PDF. Nothing leaves your browser.
+        </p>
+        <label className="flex items-center justify-center gap-2 p-4 border-2 border-dashed border-slate-300 rounded-lg cursor-pointer hover:border-slate-400 hover:bg-slate-50 transition-colors">
+          <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <span className="text-sm text-slate-600">Click to add screenshots</span>
           <input
-            type="checkbox"
-            checked={hasScreenshot}
-            onChange={(e) => setHasScreenshot(e.target.checked)}
-            className="rounded border-slate-300"
+            type="file"
+            accept="image/*"
+            multiple
+            onChange={handleFileChange}
+            className="hidden"
           />
-          I took a screenshot of this response
         </label>
+
+        {screenshots.length > 0 && (
+          <div className="space-y-2">
+            <p className="text-xs text-slate-500 font-medium">{screenshots.length} screenshot{screenshots.length !== 1 ? 's' : ''} attached</p>
+            <div className="grid grid-cols-2 gap-2">
+              {screenshots.map((s, i) => (
+                <div key={i} className="relative group border border-slate-200 rounded-lg overflow-hidden">
+                  <img src={s.dataUrl} alt={s.name} className="w-full h-24 object-cover" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors" />
+                  <button
+                    onClick={() => removeScreenshot(i)}
+                    className="absolute top-1 right-1 w-5 h-5 bg-red-500 text-white rounded-full text-xs opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+                    aria-label={`Remove ${s.name}`}
+                  >
+                    &times;
+                  </button>
+                  <p className="text-xs text-slate-500 truncate px-1 py-0.5">{s.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       <button
-        onClick={() => onContinue(responseText, hasScreenshot)}
+        onClick={() => onContinue(responseText, screenshots)}
         className="w-full p-3 rounded-xl bg-slate-800 text-white font-semibold hover:bg-slate-700 transition-colors"
       >
         I've saved the response -- continue

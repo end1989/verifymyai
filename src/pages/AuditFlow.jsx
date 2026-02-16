@@ -24,7 +24,7 @@ export default function AuditFlow({ platformId, tier, onComplete, onFinding, onR
     recordAndAdvance(level)
   }
 
-  function handleDocContinue(responseText, hasScreenshot) {
+  function handleDocContinue(responseText, screenshots) {
     const docPromptUsed = docPrompts[currentPrompt.id] || fallbackDocPrompt(currentPrompt.title)
 
     if (onRecord) {
@@ -32,7 +32,7 @@ export default function AuditFlow({ platformId, tier, onComplete, onFinding, onR
         promptId: currentPrompt.id,
         level: pendingResult,
         responseText: responseText || '',
-        hasScreenshot: hasScreenshot || false,
+        screenshots: screenshots || [],
         docPromptUsed,
       })
     }
@@ -48,7 +48,7 @@ export default function AuditFlow({ platformId, tier, onComplete, onFinding, onR
         promptId: currentPrompt.id,
         level: 'green',
         responseText: '',
-        hasScreenshot: false,
+        screenshots: [],
         docPromptUsed: null,
       })
     }
