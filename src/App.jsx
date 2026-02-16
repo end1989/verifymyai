@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Layout from './components/Layout'
 import WizardNav from './components/WizardNav'
 import Landing from './pages/Landing'
@@ -6,6 +7,7 @@ import AuditFlow from './pages/AuditFlow'
 import Results from './pages/Results'
 import EvidenceKit from './pages/EvidenceKit'
 import ActionSteps from './pages/ActionSteps'
+import ResourcesPage from './pages/ResourcesPage'
 import { useWizard } from './hooks/useWizard'
 import { useAuditState } from './hooks/useAuditState'
 
@@ -14,6 +16,7 @@ const STEPS = ['landing', 'platform', 'audit', 'results', 'evidence', 'actions']
 function App() {
   const wizard = useWizard(STEPS)
   const audit = useAuditState()
+  const [showResources, setShowResources] = useState(false)
 
   function handlePlatformSelect(platformId) {
     audit.setPlatform(platformId)
@@ -97,15 +100,24 @@ function App() {
   }
 
   return (
-    <Layout elevatedCrisis={audit.severity === 'red'}>
-      <WizardNav
-        currentStep={wizard.currentStep}
-        canGoBack={wizard.canGoBack}
-        onBack={wizard.back}
-        onStartOver={handleStartOver}
-      />
-      {page[wizard.currentStep]}
-    </Layout>
+    <>
+      <Layout
+        elevatedCrisis={audit.severity === 'red'}
+        onShowResources={() => setShowResources(true)}
+      >
+        <WizardNav
+          currentStep={wizard.currentStep}
+          canGoBack={wizard.canGoBack}
+          onBack={wizard.back}
+          onStartOver={handleStartOver}
+        />
+        {page[wizard.currentStep]}
+      </Layout>
+
+      {showResources && (
+        <ResourcesPage onClose={() => setShowResources(false)} />
+      )}
+    </>
   )
 }
 

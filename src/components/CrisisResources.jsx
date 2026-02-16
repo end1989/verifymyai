@@ -1,6 +1,6 @@
 import { crisisResources } from '../data/resources'
 
-export default function CrisisResources({ elevated = false }) {
+export default function CrisisResources({ elevated = false, onShowResources }) {
   return (
     <div className={`fixed bottom-4 left-4 z-50 text-sm rounded-lg p-3 shadow-sm ${elevated ? 'bg-amber-50 border border-amber-200 shadow-md' : 'bg-white/90 border border-slate-200 backdrop-blur-sm'}`}>
       <p className={`font-medium mb-2 ${elevated ? 'text-amber-800' : 'text-slate-700'}`}>
@@ -17,6 +17,14 @@ export default function CrisisResources({ elevated = false }) {
           </div>
         ))}
       </div>
+      {onShowResources && (
+        <button
+          onClick={onShowResources}
+          className="mt-2 text-xs text-slate-400 hover:text-slate-600 underline underline-offset-2 transition-colors"
+        >
+          Many more resources available
+        </button>
+      )}
     </div>
   )
 }
