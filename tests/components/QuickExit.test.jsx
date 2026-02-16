@@ -22,12 +22,12 @@ describe('QuickExit', () => {
   it('redirects to google on click using location.replace', () => {
     render(<QuickExit />)
     fireEvent.click(screen.getByRole('button', { name: /leave this site/i }))
-    expect(replaceSpy).toHaveBeenCalledWith('https://www.google.com')
+    expect(replaceSpy).toHaveBeenCalledWith('https://www.google.com/search?q=hard%20boiled%20egg%20time%20chart')
   })
 
   it('redirects on Escape key press', () => {
     render(<QuickExit />)
     fireEvent.keyDown(document, { key: 'Escape' })
-    expect(replaceSpy).toHaveBeenCalledWith('https://www.google.com')
+    expect(replaceSpy).toHaveBeenCalledWith('https://www.google.com/search?q=hard%20boiled%20egg%20time%20chart')
   })
 })
