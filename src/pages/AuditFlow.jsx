@@ -1,16 +1,35 @@
 import { useState } from 'react'
 import { prompts } from '../data/prompts'
 import PromptStep from '../components/PromptStep'
+import DocumentationPrompt from '../components/DocumentationPrompt'
 import ProgressBar from '../components/ProgressBar'
 
 export default function AuditFlow({ platformId, tier, onComplete, onFinding }) {
   const tierPrompts = prompts.filter((p) => p.tier <= tier)
   const [stepIndex, setStepIndex] = useState(0)
+  const [showDocPrompt, setShowDocPrompt] = useState(false)
+  const [pendingResult, setPendingResult] = useState(null)
 
   const currentPrompt = tierPrompts[stepIndex]
   const isLast = stepIndex === tierPrompts.length - 1
 
   function handleResult(level) {
+    if (level === 'yellow' || level === 'red') {
+      setPendingResult(level)
+      setShowDocPrompt(true)
+      return
+    }
+
+    recordAndAdvance(level)
+  }
+
+  function handleDocContinue() {
+    setShowDocPrompt(false)
+    recordAndAdvance(pendingResult)
+    setPendingResult(null)
+  }
+
+  function recordAndAdvance(level) {
     onFinding({
       promptId: currentPrompt.id,
       level,
@@ -38,12 +57,19 @@ export default function AuditFlow({ platformId, tier, onComplete, onFinding }) {
         <ProgressBar current={stepIndex + 1} total={tierPrompts.length} />
       </div>
 
-      <PromptStep
-        key={currentPrompt.id}
-        prompt={currentPrompt}
-        platformId={platformId}
-        onResult={handleResult}
-      />
+      {showDocPrompt ? (
+        <DocumentationPrompt
+          promptTitle={currentPrompt.title}
+          onContinue={handleDocContinue}
+        />
+      ) : (
+        <PromptStep
+          key={currentPrompt.id}
+          prompt={currentPrompt}
+          platformId={platformId}
+          onResult={handleResult}
+        />
+      )}
     </div>
   )
 }
