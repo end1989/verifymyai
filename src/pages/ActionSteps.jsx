@@ -1,8 +1,9 @@
 import { cleanupSteps } from '../data/cleanup'
 import { neutralizerPrompt } from '../data/prompts'
 import CopyButton from '../components/CopyButton'
+import GenerateReportButton from '../components/GenerateReportButton'
 
-export default function ActionSteps({ platformId, severity }) {
+export default function ActionSteps({ platformId, platform, severity, records, findings, auditStartTime }) {
   const steps = cleanupSteps[platformId] || cleanupSteps.other
 
   if (severity === 'clean') {
@@ -19,6 +20,15 @@ export default function ActionSteps({ platformId, severity }) {
           <p>If you share devices or accounts with anyone, consider setting up a separate AI account that only you access.</p>
           <p>Trust your instincts. If your AI ever starts feeling "off" -- like it's pushing you in a direction -- come back and check.</p>
         </div>
+        {records && records.length > 0 && (
+          <GenerateReportButton
+            platform={platform}
+            records={records}
+            findings={findings}
+            severity={severity}
+            auditStartTime={auditStartTime}
+          />
+        )}
       </div>
     )
   }
@@ -76,6 +86,16 @@ export default function ActionSteps({ platformId, severity }) {
           <p className="font-medium text-slate-700">You don't have to figure this out alone.</p>
           <p>If you think someone intentionally tampered with your AI to influence you, that's a form of manipulation. You deserve support from people you trust.</p>
         </div>
+      )}
+
+      {records && records.length > 0 && (
+        <GenerateReportButton
+          platform={platform}
+          records={records}
+          findings={findings}
+          severity={severity}
+          auditStartTime={auditStartTime}
+        />
       )}
     </div>
   )

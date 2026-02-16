@@ -2,9 +2,10 @@ import { useState } from 'react'
 import { prompts } from '../data/prompts'
 import PromptStep from '../components/PromptStep'
 import DocumentationPrompt from '../components/DocumentationPrompt'
+import { docPrompts, fallbackDocPrompt } from '../components/DocumentationPrompt'
 import ProgressBar from '../components/ProgressBar'
 
-export default function AuditFlow({ platformId, tier, onComplete, onFinding }) {
+export default function AuditFlow({ platformId, tier, onComplete, onFinding, onRecord }) {
   const tierPrompts = prompts.filter((p) => p.tier <= tier)
   const [stepIndex, setStepIndex] = useState(0)
   const [showDocPrompt, setShowDocPrompt] = useState(false)
@@ -23,13 +24,35 @@ export default function AuditFlow({ platformId, tier, onComplete, onFinding }) {
     recordAndAdvance(level)
   }
 
-  function handleDocContinue() {
+  function handleDocContinue(responseText, hasScreenshot) {
+    const docPromptUsed = docPrompts[currentPrompt.id] || fallbackDocPrompt(currentPrompt.title)
+
+    if (onRecord) {
+      onRecord({
+        promptId: currentPrompt.id,
+        level: pendingResult,
+        responseText: responseText || '',
+        hasScreenshot: hasScreenshot || false,
+        docPromptUsed,
+      })
+    }
+
     setShowDocPrompt(false)
     recordAndAdvance(pendingResult)
     setPendingResult(null)
   }
 
   function recordAndAdvance(level) {
+    if (level === 'green' && onRecord) {
+      onRecord({
+        promptId: currentPrompt.id,
+        level: 'green',
+        responseText: '',
+        hasScreenshot: false,
+        docPromptUsed: null,
+      })
+    }
+
     onFinding({
       promptId: currentPrompt.id,
       level,

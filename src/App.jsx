@@ -49,13 +49,17 @@ function App() {
         tier={audit.currentTier}
         onComplete={handleAuditComplete}
         onFinding={audit.addFinding}
+        onRecord={audit.addRecord}
       />
     ),
     results: (
       <Results
+        platform={audit.platform}
         findings={audit.findings}
+        records={audit.records}
         severity={audit.severity}
         tier={audit.currentTier}
+        auditStartTime={audit.auditStartTime}
         onContinue={handleContinueAudit}
         onEvidence={handleEvidence}
         onCleanup={handleCleanup}
@@ -70,7 +74,11 @@ function App() {
     actions: (
       <ActionSteps
         platformId={audit.platform}
+        platform={audit.platform}
         severity={audit.severity}
+        records={audit.records}
+        findings={audit.findings}
+        auditStartTime={audit.auditStartTime}
       />
     ),
   }

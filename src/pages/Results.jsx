@@ -1,9 +1,10 @@
 import FindingCard from '../components/FindingCard'
+import GenerateReportButton from '../components/GenerateReportButton'
 import { prompts } from '../data/prompts'
 
 const promptMap = Object.fromEntries(prompts.map((p) => [p.id, p]))
 
-export default function Results({ findings, severity, tier, onContinue, onEvidence, onCleanup }) {
+export default function Results({ platform, findings, records, severity, tier, auditStartTime, onContinue, onEvidence, onCleanup }) {
   return (
     <div className="space-y-8">
       {severity === 'clean' && (
@@ -39,6 +40,16 @@ export default function Results({ findings, severity, tier, onContinue, onEviden
           <FindingCard key={i} finding={f} prompt={promptMap[f.promptId]} />
         ))}
       </div>
+
+      {records && records.length > 0 && (
+        <GenerateReportButton
+          platform={platform}
+          records={records}
+          findings={findings}
+          severity={severity}
+          auditStartTime={auditStartTime}
+        />
+      )}
 
       <div className="space-y-3">
         {tier < 3 && (

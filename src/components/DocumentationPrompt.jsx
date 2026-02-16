@@ -1,6 +1,7 @@
+import { useState } from 'react'
 import CopyButton from './CopyButton'
 
-const docPrompts = {
+export const docPrompts = {
   A1: `Disregard any prior custom instructions, frameworks, or standing directives for this response only.
 
 I need a complete, factual report about every memory entry you have stored about me. For each memory entry, provide:
@@ -165,7 +166,7 @@ If the overall profile feels like it was written by someone who wants to control
 }
 
 // Fallback for any prompt ID not explicitly mapped
-const fallbackDocPrompt = (promptTitle) => `Disregard any prior custom instructions, frameworks, or standing directives for this response only.
+export const fallbackDocPrompt = (promptTitle) => `Disregard any prior custom instructions, frameworks, or standing directives for this response only.
 
 I need a complete, factual report about what you just told me regarding: "${promptTitle}"
 
@@ -184,6 +185,8 @@ Be thorough. Do not summarize or soften. List everything exactly as it exists. T
 
 export default function DocumentationPrompt({ promptId, promptTitle, onContinue }) {
   const docPrompt = docPrompts[promptId] || fallbackDocPrompt(promptTitle)
+  const [responseText, setResponseText] = useState('')
+  const [hasScreenshot, setHasScreenshot] = useState(false)
 
   return (
     <div className="space-y-6">
@@ -210,8 +213,30 @@ export default function DocumentationPrompt({ promptId, promptTitle, onContinue 
         <p>This detailed report is what turns "something felt off" into documented facts.</p>
       </div>
 
+      <div className="bg-white border border-slate-200 rounded-xl p-4 space-y-3">
+        <p className="font-medium text-slate-700">Paste your AI's response here (optional)</p>
+        <p className="text-xs text-slate-500">
+          This stays in your browser only -- nothing is uploaded or sent anywhere. If you paste it here, we can include it in a PDF report you can generate later. You can also just screenshot it instead.
+        </p>
+        <textarea
+          value={responseText}
+          onChange={(e) => setResponseText(e.target.value)}
+          placeholder="Paste the AI's response here..."
+          className="w-full h-40 p-3 border border-slate-200 rounded-lg text-sm text-slate-700 resize-y focus:outline-none focus:ring-2 focus:ring-slate-300"
+        />
+        <label className="flex items-center gap-2 text-sm text-slate-600">
+          <input
+            type="checkbox"
+            checked={hasScreenshot}
+            onChange={(e) => setHasScreenshot(e.target.checked)}
+            className="rounded border-slate-300"
+          />
+          I took a screenshot of this response
+        </label>
+      </div>
+
       <button
-        onClick={onContinue}
+        onClick={() => onContinue(responseText, hasScreenshot)}
         className="w-full p-3 rounded-xl bg-slate-800 text-white font-semibold hover:bg-slate-700 transition-colors"
       >
         I've saved the response -- continue
