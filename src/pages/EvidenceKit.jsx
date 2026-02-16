@@ -1,5 +1,6 @@
 import { evidenceSteps } from '../data/evidence'
 import CopyButton from '../components/CopyButton'
+import ScreenshotGuide from '../components/ScreenshotGuide'
 
 export default function EvidenceKit({ platformId, onDone }) {
   const steps = evidenceSteps[platformId] || evidenceSteps.other
@@ -42,6 +43,8 @@ export default function EvidenceKit({ platformId, onDone }) {
         </blockquote>
         <CopyButton text="List every custom instruction, memory entry, or standing directive currently active on my account. For each one, include when it was created or last modified if that information is available." />
       </div>
+
+      <ScreenshotGuide />
 
       <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3">
         <h3 className="font-semibold text-slate-800">Save your documentation</h3>

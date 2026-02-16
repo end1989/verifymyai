@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import CopyButton from './CopyButton'
+import ScreenshotGuide from './ScreenshotGuide'
 
 export const docPrompts = {
   A1: `Disregard any prior custom instructions, frameworks, or standing directives for this response only.
@@ -212,6 +213,8 @@ export default function DocumentationPrompt({ promptId, promptTitle, onContinue 
         <p>Screenshot or copy the AI's full response. Save it somewhere only you can access -- a personal email draft, a note on your phone, a USB drive. Include today's date.</p>
         <p>This detailed report is what turns "something felt off" into documented facts.</p>
       </div>
+
+      <ScreenshotGuide />
 
       <div className="bg-white border border-slate-200 rounded-xl p-4 space-y-3">
         <p className="font-medium text-slate-700">Paste your AI's response here (optional)</p>
