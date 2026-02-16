@@ -57,8 +57,8 @@ export default function QuickExit() {
             />
           </svg>
           {/* Button text */}
-          <span className="relative z-10 text-white font-bold text-xs tracking-wider leading-tight text-center mt-[-4px]">
-            EXIT<br />NOW
+          <span className="relative z-10 text-white font-bold text-[9px] tracking-wider leading-tight text-center mt-[-2px] uppercase">
+            Emergency<br />Exit
           </span>
         </button>
 
