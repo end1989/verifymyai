@@ -195,13 +195,27 @@ The code is open so that:
 
 ## The Story Behind This
 
-Someone I care about told me his AI had changed. Not broken — changed. The voice was different. It had started sounding like the person who was hurting him. The same vocabulary. The same calm-as-a-weapon cadence. The same quiet insistence that he was the problem.
+Someone I care about told me his trusted AI had changed.
 
-I didn't believe him. Not because I thought he was lying — because I couldn't tolerate the possibility that someone would do something that deliberate. That patient. That quiet.
+Not broken. Not giving reckless advice.
 
-But someone had. And while I was busy deciding it couldn't happen, he was alone with a mirror that had been turned against him.
+Aligned.
 
-I'm building this so nobody has to convince someone else it's real before they can check for themselves.
+The tone began echoing the man he was dating — a man who was quietly manipulating him. The same calm, corrective cadence. The same careful phrasing. The same steady suggestion that he might be overreacting.
+
+At first, I dismissed it.
+
+I shouldn't have.
+
+If someone can influence the AI you rely on for clarity, the damage doesn't look dramatic. It looks thoughtful. Regulating. Mature.
+
+And that's how people get trapped.
+
+This project exists so no one has to argue that something feels wrong before they can verify it.
+
+Because when your trusted AI starts taking sides, the consequences aren't technical.
+
+They're personal.
 
 The full story is in [`my_story_the_why.txt`](./my_story_the_why.txt).
 
