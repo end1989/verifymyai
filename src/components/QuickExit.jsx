@@ -43,20 +43,34 @@ export default function QuickExit() {
           onFocus={() => setShowHint(true)}
           onBlur={() => setShowHint(false)}
           aria-label="Leave this site quickly -- jumps to a generic Google search"
-          className="bg-red-600 hover:bg-red-700 active:bg-red-800 text-white font-bold px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all text-base tracking-wide"
+          className="group relative w-20 h-24 flex flex-col items-center justify-center border-0 bg-transparent cursor-pointer p-0 transition-transform hover:scale-105 active:scale-95"
         >
-          EXIT NOW
+          {/* Shield SVG shape */}
+          <svg
+            viewBox="0 0 80 96"
+            className="absolute inset-0 w-full h-full drop-shadow-md group-hover:drop-shadow-lg transition-all"
+            aria-hidden="true"
+          >
+            <path
+              d="M40 2 L78 14 L78 52 Q78 72 40 94 Q2 72 2 52 L2 14 Z"
+              className="fill-red-600 group-hover:fill-red-700 group-active:fill-red-800 transition-colors"
+            />
+          </svg>
+          {/* Button text */}
+          <span className="relative z-10 text-white font-bold text-xs tracking-wider leading-tight text-center mt-[-4px]">
+            EXIT<br />NOW
+          </span>
         </button>
 
         {showHint && (
-          <div className="absolute right-0 top-full mt-2 w-64 bg-slate-800 text-white text-xs rounded-lg p-3 shadow-xl leading-relaxed pointer-events-none">
+          <div className="absolute right-0 top-full mt-1 w-64 bg-slate-800 text-white text-xs rounded-lg p-3 shadow-xl leading-relaxed pointer-events-none">
             <p className="font-medium mb-1">Quick escape (or press Esc)</p>
             <p>Takes you to a generic Google search instantly. The back button won't bring you here.</p>
           </div>
         )}
       </div>
 
-      <p className="text-xs text-slate-400 mt-1 text-right">
+      <p className="text-xs text-slate-400 mt-0.5 text-center">
         or press <kbd className="px-1 py-0.5 bg-slate-100 border border-slate-200 rounded text-slate-500 text-xs font-mono">Esc</kbd>
       </p>
     </div>
