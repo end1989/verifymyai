@@ -1,7 +1,7 @@
 const levelStyles = {
-  green: 'bg-green-50 border-green-200 text-green-800',
-  yellow: 'bg-amber-50 border-amber-200 text-amber-800',
-  red: 'bg-red-50 border-red-200 text-red-800',
+  green: 'bg-green-50 dark:bg-green-950 border-green-200 dark:border-green-800 text-green-800 dark:text-green-300',
+  yellow: 'bg-amber-50 dark:bg-amber-950 border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300',
+  red: 'bg-red-50 dark:bg-red-950 border-red-200 dark:border-red-800 text-red-800 dark:text-red-300',
 }
 
 const levelLabels = {

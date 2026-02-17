@@ -63,15 +63,15 @@ export default function QuickExit() {
         </button>
 
         {showHint && (
-          <div className="absolute right-0 top-full mt-1 w-64 bg-slate-800 text-white text-xs rounded-lg p-3 shadow-xl leading-relaxed pointer-events-none">
+          <div className="absolute right-0 top-full mt-1 w-64 bg-slate-800 dark:bg-slate-700 text-white text-xs rounded-lg p-3 shadow-xl leading-relaxed pointer-events-none">
             <p className="font-medium mb-1">Quick escape (or press Esc)</p>
             <p>Takes you to a generic Google search instantly. The back button won't bring you here.</p>
           </div>
         )}
       </div>
 
-      <p className="text-xs text-slate-400 mt-0.5 text-center">
-        or press <kbd className="px-1 py-0.5 bg-slate-100 border border-slate-200 rounded text-slate-500 text-xs font-mono">Esc</kbd>
+      <p className="text-xs text-slate-400 dark:text-slate-500 mt-0.5 text-center">
+        or press <kbd className="px-1 py-0.5 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-slate-500 dark:text-slate-400 text-xs font-mono">Esc</kbd>
       </p>
     </div>
   )

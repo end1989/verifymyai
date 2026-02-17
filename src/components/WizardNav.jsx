@@ -17,7 +17,7 @@ export default function WizardNav({ currentStep, onBack, onStartOver, canGoBack 
         {canGoBack && (
           <button
             onClick={onBack}
-            className="flex items-center gap-1 text-sm text-slate-500 hover:text-slate-700 transition-colors min-h-[44px] min-w-[44px]"
+            className="flex items-center gap-1 text-sm text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors min-h-[44px] min-w-[44px]"
             aria-label="Go back"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -26,14 +26,14 @@ export default function WizardNav({ currentStep, onBack, onStartOver, canGoBack 
             Back
           </button>
         )}
-        <span className="text-sm font-medium text-slate-400">
+        <span className="text-sm font-medium text-slate-400 dark:text-slate-500">
           {stepLabels[currentStep] || currentStep}
         </span>
       </div>
 
       <button
         onClick={onStartOver}
-        className="text-sm text-slate-400 hover:text-slate-600 transition-colors underline underline-offset-2 min-h-[44px] px-2"
+        className="text-sm text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors underline underline-offset-2 min-h-[44px] px-2"
       >
         Start over
       </button>

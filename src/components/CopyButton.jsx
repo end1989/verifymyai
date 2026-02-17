@@ -16,8 +16,8 @@ export default function CopyButton({ text }) {
         aria-label={copied ? 'Copied' : 'Copy prompt'}
         className={`px-4 py-3 min-h-[44px] rounded-md text-sm font-medium transition-colors ${
           copied
-            ? 'bg-green-100 text-green-700'
-            : 'bg-slate-800 text-white hover:bg-slate-700'
+            ? 'bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300'
+            : 'bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-900 hover:bg-slate-700 dark:hover:bg-slate-300'
         }`}
       >
         {copied ? 'Copied' : 'Copy prompt'}

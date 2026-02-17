@@ -71,7 +71,7 @@ export default function AuditFlow({ platformId, tier, onComplete, onFinding, onR
   return (
     <div className="space-y-6">
       <div>
-        <p className="text-sm text-slate-500 mb-2" aria-live="polite">
+        <p className="text-sm text-slate-500 dark:text-slate-400 mb-2" aria-live="polite">
           Prompt {stepIndex + 1} of {tierPrompts.length}
           {tier === 1 && ' (Quick Check)'}
           {tier === 2 && ' (Full Audit)'}

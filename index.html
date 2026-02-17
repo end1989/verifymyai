@@ -13,7 +13,8 @@
     <!-- SEO — neutral language, safe to appear in browser history / link previews -->
     <meta name="description" content="Free tool to check your AI assistant's settings and privacy configuration. No sign-up, no tracking, works offline." />
     <link rel="canonical" href="https://verifymyai.org/" />
-    <meta name="theme-color" content="#1e3a5f" />
+    <meta name="theme-color" content="#1e3a5f" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -29,6 +30,9 @@
     <meta name="twitter:image" content="https://verifymyai.org/social-preview.png" />
   </head>
   <body>
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')})()
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

@@ -38,20 +38,20 @@ export default function InstallPrompt() {
 
   return (
     <div className="fixed bottom-20 left-4 right-4 mx-auto max-w-md z-40" data-print-hide>
-      <div className="bg-white border border-slate-200 rounded-lg shadow-lg px-4 py-3 flex items-center justify-between gap-3 text-sm">
-        <span className="text-slate-600">
+      <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg px-4 py-3 flex items-center justify-between gap-3 text-sm">
+        <span className="text-slate-600 dark:text-slate-300">
           Install this app for offline access
         </span>
         <div className="flex gap-2 shrink-0">
           <button
             onClick={handleDismiss}
-            className="text-slate-400 hover:text-slate-600 px-3 py-2 min-h-[44px]"
+            className="text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 px-3 py-2 min-h-[44px]"
           >
             Not now
           </button>
           <button
             onClick={handleInstall}
-            className="bg-blue-600 text-white px-4 py-2 min-h-[44px] rounded hover:bg-blue-700"
+            className="bg-blue-600 dark:bg-blue-700 text-white px-4 py-2 min-h-[44px] rounded hover:bg-blue-700 dark:hover:bg-blue-600"
           >
             Install
           </button>
