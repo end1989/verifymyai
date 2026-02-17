@@ -1,6 +1,6 @@
 # VerifyMyAI — Roadmap & Next Steps
 
-> Last updated: 2026-02-16
+> Last updated: 2026-02-17
 
 This document maps out everything between where we are now and where this project needs to be — organized by priority, grouped into phases, and written so anyone picking up a task knows exactly what to do and why it matters.
 
@@ -34,12 +34,12 @@ These are the gaps between "it works" and "it's ready for people to find it, sha
 
 The site has zero discoverability metadata. If someone shares verifymyai.org on Twitter, Facebook, Signal, or iMessage — it shows a blank card. For a project that depends on people sharing one link, this is a blocker.
 
-- [ ] Add `<meta name="description">` — something careful and neutral (remember: the tab already says "Safety Resource" for privacy)
-- [ ] Add Open Graph tags: `og:title`, `og:description`, `og:image`, `og:url`, `og:type`
-- [ ] Add Twitter Card tags: `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`
-- [ ] Create a social preview image (1200x630) — should be informational, not alarming. Something someone wouldn't be afraid to have pop up on their screen
-- [ ] Add `<meta name="theme-color">` for mobile browser chrome
-- [ ] Add canonical URL link
+- [x] Add `<meta name="description">` — something careful and neutral (remember: the tab already says "Safety Resource" for privacy)
+- [x] Add Open Graph tags: `og:title`, `og:description`, `og:image`, `og:url`, `og:type`
+- [x] Add Twitter Card tags: `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`
+- [x] Create a social preview image (1200x630) — should be informational, not alarming. Something someone wouldn't be afraid to have pop up on their screen
+- [x] Add `<meta name="theme-color">` for mobile browser chrome
+- [x] Add canonical URL link
 
 **Tension to navigate:** The meta description and OG tags will be visible in link previews. They need to communicate what this is without making someone in danger feel exposed for clicking the link. Consider something neutral like "Free tool to check your AI assistant's settings" rather than anything about abuse or manipulation.
 
@@ -47,30 +47,30 @@ The site has zero discoverability metadata. If someone shares verifymyai.org on 
 
 Still using the default Vite logo. Anyone who's used Vite will clock it instantly — it undermines trust.
 
-- [ ] Design a simple favicon (shield motif matches the Emergency Exit button)
-- [ ] Create favicon.ico (16x16, 32x32)
-- [ ] Create favicon.svg for modern browsers
-- [ ] Create apple-touch-icon.png (180x180)
-- [ ] Create PWA icons (192x192, 512x512) — needed for Phase 2 anyway
-- [ ] Update `index.html` to reference new icons
-- [ ] Remove vite.svg from public/
+- [x] Design a simple favicon (shield motif matches the Emergency Exit button)
+- [x] Create favicon.ico (16x16, 32x32)
+- [x] Create favicon.svg for modern browsers
+- [x] Create apple-touch-icon.png (180x180)
+- [x] Create PWA icons (192x192, 512x512) — needed for Phase 2 anyway
+- [x] Update `index.html` to reference new icons
+- [x] Remove vite.svg from public/
 
 ### 1.3 — Project health files
 
 The README says MIT license. There's no LICENSE file. Open-source projects without these files look abandoned or unserious.
 
-- [ ] Add `LICENSE` (MIT, full text)
-- [ ] Add `CONTRIBUTING.md` — how to contribute, code of conduct expectations, what kinds of contributions are needed (reference the README's contributing section)
-- [ ] Add `SECURITY.md` — responsible disclosure process, what constitutes a vulnerability in this context (both technical and behavioral pattern detection)
-- [ ] Add `CODE_OF_CONDUCT.md` — important given the subject matter; contributors may include survivors, advocates, and researchers
+- [x] Add `LICENSE` (MIT, full text)
+- [x] Add `CONTRIBUTING.md` — how to contribute, code of conduct expectations, what kinds of contributions are needed (reference the README's contributing section)
+- [x] Add `SECURITY.md` — responsible disclosure process, what constitutes a vulnerability in this context (both technical and behavioral pattern detection)
+- [x] Add `CODE_OF_CONDUCT.md` — important given the subject matter; contributors may include survivors, advocates, and researchers
 
 ### 1.4 — Fix the test script
 
 `npm test` doesn't work. Anyone who clones the repo and runs the standard command gets nothing.
 
-- [ ] Add `"test": "vitest run"` to package.json scripts
-- [ ] Add `"test:watch": "vitest"` for development
-- [ ] Verify both work on clean install
+- [x] Add `"test": "vitest run"` to package.json scripts
+- [x] Add `"test:watch": "vitest"` for development
+- [x] Verify both work on clean install
 
 ---
 
