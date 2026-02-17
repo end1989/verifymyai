@@ -13,7 +13,7 @@ React 19 + Vite 7 + Tailwind CSS 4. No backend, no database, no API keys. Static
 ```bash
 npm install              # Install dependencies
 npm run dev              # Dev server at localhost:5173
-npx vitest run           # Run all tests (44 tests)
+npm test                 # Run all tests (102 tests)
 npx vitest run tests/pages/AuditFlow.test.jsx  # Single test file
 npm run build            # Production build to dist/
 npm run lint             # ESLint
@@ -50,9 +50,7 @@ This tool is built for people who may be in danger. Do NOT break these:
 
 ## Testing
 
-Vitest + React Testing Library + jsdom. Setup in `tests/setup.js`. Test files mirror src structure in `tests/`. Currently 44 tests.
-
-Note: `npm test` is NOT configured in package.json. Use `npx vitest run`.
+Vitest + React Testing Library + jsdom. Setup in `tests/setup.js`. Test files mirror src structure in `tests/`. Currently 102 tests across 23 test files.
 
 ## Deployment
 
@@ -60,7 +58,6 @@ Cloudflare Pages. Push to `master` branch triggers auto-deploy. Build command: `
 
 ## Gotchas
 
-- No `npm test` script — use `npx vitest run`
 - jsPDF/JSZip are runtime dependencies (not dev) because report generation happens in-browser
 - QuickExit pushes 10 history entries — this is intentional (back button protection)
 - React 19 (not 18) — uses the new JSX transform

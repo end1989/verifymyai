@@ -148,28 +148,28 @@ People using this tool may be doing so in situations where they need to disconne
 **Priority: Medium. Core paths are tested, but gaps exist in critical safety components.**
 
 ### Current state
-- **Tested:** Landing, PlatformPicker, AuditFlow, Results, EvidenceKit, ActionSteps, CopyButton, CrisisResources, PlatformCard, QuickExit, useWizard, useAuditState + smoke test
-- **Not tested:** DocumentationPrompt, FindingCard, GenerateReportButton, Layout, ProgressBar, PromptStep, ScreenshotGuide, TrustPact, WizardNav, ResourcesPage, generateReport.js
+- **102 tests passing** (up from 44)
+- **Tested:** All components and pages. Only generateReport.js (unit test with mocked jsPDF/JSZip) and integration tests remain.
 
 ### 4.1 — Safety-critical component tests
 
 These are the components where a regression could cause real harm:
 
-- [ ] **QuickExit** — expand existing tests: verify history entries are pushed, sessionStorage is cleared, Esc key works, the redirect URL is correct
-- [ ] **GenerateReportButton** — test loading state, error handling, that it calls generateReport
+- [x] **QuickExit** — expand existing tests: verify history entries are pushed, sessionStorage is cleared, Esc key works, the redirect URL is correct
+- [x] **GenerateReportButton** — test loading state, error handling, that it calls generateReport
 - [ ] **generateReport.js** — unit test the ZIP/PDF generation (mock jsPDF and JSZip)
-- [ ] **ResourcesPage** — test that all 11 categories render, phone links are `tel:`, expand/collapse works
-- [ ] **DocumentationPrompt** — test screenshot upload, removal, text input, continue flow
+- [x] **ResourcesPage** — test that all 11 categories render, phone links are `tel:`, expand/collapse works
+- [x] **DocumentationPrompt** — test screenshot upload, removal, text input, continue flow
 
 ### 4.2 — UI component tests
 
-- [ ] WizardNav — back button, start over, step labels
-- [ ] TrustPact — renders content
-- [ ] ScreenshotGuide — renders guidance
-- [ ] Layout — passes props to children, CrisisResources always present
-- [ ] ProgressBar — correct width calculations
-- [ ] PromptStep — copy button, prompt display, look-for guidance
-- [ ] FindingCard — severity styling, content display
+- [x] WizardNav — back button, start over, step labels
+- [x] TrustPact — renders content
+- [x] ScreenshotGuide — renders guidance
+- [x] Layout — passes props to children, CrisisResources always present
+- [x] ProgressBar — correct width calculations
+- [x] PromptStep — copy button, prompt display, look-for guidance
+- [x] FindingCard — severity styling, content display
 
 ### 4.3 — Integration tests
 
