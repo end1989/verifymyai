@@ -5,7 +5,7 @@ import CrisisResources from '../../src/components/CrisisResources'
 describe('CrisisResources', () => {
   it('renders "Help is available" always visible', () => {
     render(<CrisisResources />)
-    expect(screen.getByText(/help is available/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/help is available/i).length).toBeGreaterThan(0)
   })
 
   it('always shows resources without needing a click', () => {

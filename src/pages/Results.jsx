@@ -51,7 +51,7 @@ export default function Results({ platform, findings, records, severity, tier, a
         />
       )}
 
-      <div className="space-y-3">
+      <div className="space-y-3" data-print-hide>
         {tier < 3 && (
           <button
             onClick={() => onContinue(tier + 1)}

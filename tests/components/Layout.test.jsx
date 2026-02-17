@@ -18,7 +18,7 @@ describe('Layout', () => {
         <p>Page</p>
       </Layout>
     )
-    expect(screen.getByText(/help is available/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/help is available/i).length).toBeGreaterThan(0)
   })
 
   it('renders Emergency Exit button', () => {

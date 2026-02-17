@@ -148,8 +148,8 @@ People using this tool may be doing so in situations where they need to disconne
 **Priority: Medium. Core paths are tested, but gaps exist in critical safety components.**
 
 ### Current state
-- **102 tests passing** (up from 44)
-- **Tested:** All components and pages. Only generateReport.js (unit test with mocked jsPDF/JSZip) and integration tests remain.
+- **109 tests passing** (up from 44)
+- **Tested:** All components, pages, and generateReport.js. Only integration tests remain.
 
 ### 4.1 — Safety-critical component tests
 
@@ -157,7 +157,7 @@ These are the components where a regression could cause real harm:
 
 - [x] **QuickExit** — expand existing tests: verify history entries are pushed, sessionStorage is cleared, Esc key works, the redirect URL is correct
 - [x] **GenerateReportButton** — test loading state, error handling, that it calls generateReport
-- [ ] **generateReport.js** — unit test the ZIP/PDF generation (mock jsPDF and JSZip)
+- [x] **generateReport.js** — unit test the ZIP/PDF generation (mock jsPDF and JSZip)
 - [x] **ResourcesPage** — test that all 11 categories render, phone links are `tel:`, expand/collapse works
 - [x] **DocumentationPrompt** — test screenshot upload, removal, text input, continue flow
 
@@ -186,15 +186,15 @@ These are the components where a regression could cause real harm:
 
 ### 5.1 — Print stylesheet
 
-- [ ] Add `@media print` styles so the audit results can be printed cleanly
-- [ ] Hide navigation, Emergency Exit, and interactive elements in print
-- [ ] Format findings and evidence for paper
+- [x] Add `@media print` styles so the audit results can be printed cleanly
+- [x] Hide navigation, Emergency Exit, and interactive elements in print
+- [x] Format findings and evidence for paper
 - [ ] Some users may need physical copies for counselors, lawyers, or law enforcement
 
 ### 5.2 — Additional export formats
 
-- [ ] Plain text export (for pasting into secure notes or encrypted messages)
-- [ ] JSON export (for researchers or forensic analysis)
+- [x] Plain text export (for pasting into secure notes or encrypted messages)
+- [x] JSON export (for researchers or forensic analysis)
 - [ ] Consider: CSV of findings for spreadsheet analysis
 
 ### 5.3 — Educational content

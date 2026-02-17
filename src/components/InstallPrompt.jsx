@@ -37,7 +37,7 @@ export default function InstallPrompt() {
   if (!deferredPrompt || dismissed) return null
 
   return (
-    <div className="fixed bottom-20 left-4 right-4 mx-auto max-w-md z-40">
+    <div className="fixed bottom-20 left-4 right-4 mx-auto max-w-md z-40" data-print-hide>
       <div className="bg-white border border-slate-200 rounded-lg shadow-lg px-4 py-3 flex items-center justify-between gap-3 text-sm">
         <span className="text-slate-600">
           Install this app for offline access

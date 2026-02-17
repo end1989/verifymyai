@@ -36,3 +36,62 @@
 .skip-link:focus {
   top: 0;
 }
+
+/* ===== Print stylesheet ===== */
+@media print {
+  /* Hide interactive/safety elements that don't belong on paper */
+  .skip-link,
+  [aria-label="Leave this site quickly -- jumps to a generic Google search"],
+  [aria-label="Leave this site quickly -- jumps to a generic Google search"] + p,
+  aside[aria-label="Crisis resources"],
+  nav[aria-label="Audit navigation"],
+  [data-print-hide] {
+    display: none !important;
+  }
+
+  /* Remove fixed positioning */
+  .fixed {
+    position: static !important;
+  }
+
+  /* Clean layout for paper */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+  }
+
+  main {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Ensure borders and backgrounds print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Clean up severity banners for print */
+  .rounded-xl {
+    border-radius: 4px !important;
+  }
+
+  /* Avoid awkward page breaks */
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+
+  .space-y-3 > * {
+    page-break-inside: avoid;
+  }
+
+  /* Add URL after external links */
+  a[href^="http"]::after,
+  a[href^="tel:"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #666;
+  }
+}
