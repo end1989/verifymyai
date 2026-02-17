@@ -1,0 +1,6 @@
+# verifymyai.org — AI privacy audit tool
+# Allow all crawlers to index for proper categorization
+User-agent: *
+Allow: /
+
+Sitemap: https://verifymyai.org/sitemap.xml

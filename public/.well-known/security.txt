@@ -1,0 +1,9 @@
+# Security contact for verifymyai.org
+# This is a free, open-source AI privacy audit tool.
+# No user data is collected or stored.
+
+Contact: https://github.com/end1989/verifymyai/issues
+Expires: 2027-02-17T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://verifymyai.org/.well-known/security.txt
+Policy: https://github.com/end1989/verifymyai/blob/master/PRIVACY.md
