@@ -43,8 +43,6 @@
 @media print {
   /* Hide interactive/safety elements that don't belong on paper */
   .skip-link,
-  [aria-label="Leave this site quickly -- jumps to a generic Google search"],
-  [aria-label="Leave this site quickly -- jumps to a generic Google search"] + p,
   aside[aria-label="Crisis resources"],
   nav[aria-label="Audit navigation"],
   [data-print-hide] {

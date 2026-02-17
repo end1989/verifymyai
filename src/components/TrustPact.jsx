@@ -20,7 +20,7 @@ export default function TrustPact() {
 
       <div className="bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg p-3 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
         <p>
-          The <strong>Emergency Exit</strong> shield in the top-right corner (or press <kbd className="px-1 py-0.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded font-mono">Esc</kbd>) will take you to a boring cooking Google search instantly (so it looks ordinary if someone walks in) and replace this tab's history entry. The back button won't bring you here. We sincerely hope this is a precaution that is never needed, and it breaks our hearts that it might be. If you need it, you're not overreacting — you're protecting yourself. You're seen, and you're loved.
+          The <strong>Emergency Exit</strong> button in the bottom-right corner (or press <kbd className="px-1 py-0.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded font-mono">Esc</kbd>) will take you to a boring cooking Google search instantly (so it looks ordinary if someone walks in) and replace this tab's history entry. The back button won't bring you here. We sincerely hope this is a precaution that is never needed, and it breaks our hearts that it might be. If you need it, you're not overreacting — you're protecting yourself. You're seen, and you're loved.
         </p>
       </div>
     </div>

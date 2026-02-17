@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 function quickExit() {
   // Clear anything we might have in sessionStorage/localStorage
@@ -23,8 +23,6 @@ function quickExit() {
 }
 
 export default function QuickExit() {
-  const [showHint, setShowHint] = useState(false)
-
   useEffect(() => {
     function handleKey(e) {
       if (e.key === 'Escape') quickExit()
@@ -34,45 +32,20 @@ export default function QuickExit() {
   }, [])
 
   return (
-    <div className="fixed top-0 right-0 z-50 p-3">
-      <div className="relative">
-        <button
-          onClick={quickExit}
-          onMouseEnter={() => setShowHint(true)}
-          onMouseLeave={() => setShowHint(false)}
-          onFocus={() => setShowHint(true)}
-          onBlur={() => setShowHint(false)}
-          aria-label="Leave this site quickly -- jumps to a generic Google search"
-          className="group relative w-20 h-24 flex flex-col items-center justify-center border-0 bg-transparent cursor-pointer p-0 transition-transform hover:scale-105 active:scale-95"
-        >
-          {/* Shield SVG shape */}
-          <svg
-            viewBox="0 0 80 96"
-            className="absolute inset-0 w-full h-full drop-shadow-md group-hover:drop-shadow-lg transition-all"
-            aria-hidden="true"
-          >
-            <path
-              d="M40 2 L78 14 L78 52 Q78 72 40 94 Q2 72 2 52 L2 14 Z"
-              className="fill-red-600 group-hover:fill-red-700 group-active:fill-red-800 transition-colors"
-            />
-          </svg>
-          {/* Button text */}
-          <span className="relative z-10 text-white font-bold text-[11px] tracking-wider leading-tight text-center mt-[-2px] uppercase">
-            Emergency<br />Exit
-          </span>
-        </button>
-
-        {showHint && (
-          <div className="absolute right-0 top-full mt-1 w-64 bg-slate-800 dark:bg-slate-700 text-white text-xs rounded-lg p-3 shadow-xl leading-relaxed pointer-events-none">
-            <p className="font-medium mb-1">Quick escape (or press Esc)</p>
-            <p>Takes you to a generic Google search instantly. The back button won't bring you here.</p>
-          </div>
-        )}
-      </div>
-
-      <p className="text-xs text-slate-400 dark:text-slate-500 mt-0.5 text-center">
-        or press <kbd className="px-1 py-0.5 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-slate-500 dark:text-slate-400 text-xs font-mono">Esc</kbd>
-      </p>
-    </div>
+    <button
+      onClick={quickExit}
+      aria-label="Leave this site quickly -- jumps to a generic Google search"
+      className="group relative flex items-center gap-1.5 px-3 py-1.5 min-h-[44px] rounded-lg bg-red-600 hover:bg-red-700 active:bg-red-800 text-white text-xs font-bold uppercase tracking-wider transition-all hover:scale-105 active:scale-95 shadow-sm"
+    >
+      {/* Shield icon */}
+      <svg viewBox="0 0 80 96" className="w-4 h-5 shrink-0" aria-hidden="true">
+        <path
+          d="M40 2 L78 14 L78 52 Q78 72 40 94 Q2 72 2 52 L2 14 Z"
+          className="fill-white/90"
+        />
+      </svg>
+      <span>Exit</span>
+      <kbd className="ml-1 text-[10px] font-mono text-red-200 font-normal hidden sm:inline">(Esc)</kbd>
+    </button>
   )
 }

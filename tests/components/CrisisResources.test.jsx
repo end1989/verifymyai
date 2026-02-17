@@ -8,9 +8,9 @@ describe('CrisisResources', () => {
     expect(screen.getAllByText(/help is available/i).length).toBeGreaterThan(0)
   })
 
-  it('always shows resources without needing a click', () => {
+  it('always shows hotline numbers without needing a click', () => {
     render(<CrisisResources />)
-    expect(screen.getByText(/National Domestic Violence Hotline/i)).toBeInTheDocument()
+    expect(screen.getByText('1-800-799-7233')).toBeInTheDocument()
   })
 
   it('uses elevated styling when elevated prop is true', () => {
