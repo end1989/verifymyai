@@ -82,7 +82,7 @@ People using this tool may be doing so in situations where they need to disconne
 
 ### 2.1 — PWA manifest
 
-- [ ] Create `manifest.webmanifest` with:
+- [x] Create `manifest.webmanifest` with:
   - `name`: "Safety Resource" (NOT "VerifyMyAI" — maintain the neutral tab title pattern)
   - `short_name`: "Safety Check"
   - `description`: neutral phrasing
@@ -90,22 +90,22 @@ People using this tool may be doing so in situations where they need to disconne
   - `display`: "standalone"
   - `background_color` / `theme_color`
   - `icons`: reference the icons from 1.2
-- [ ] Link manifest in `index.html`
+- [x] Link manifest in `index.html`
 
 ### 2.2 — Service worker
 
-- [ ] Implement service worker with offline-first caching strategy
-- [ ] Cache all static assets on install (HTML, JS, CSS, fonts)
-- [ ] Use `vite-plugin-pwa` or manual SW — evaluate which gives more control
-- [ ] Handle cache versioning (bust cache on new deployments)
+- [x] Implement service worker with offline-first caching strategy
+- [x] Cache all static assets on install (HTML, JS, CSS, fonts)
+- [x] Use `vite-plugin-pwa` or manual SW — evaluate which gives more control
+- [x] Handle cache versioning (bust cache on new deployments)
 - [ ] Test: airplane mode after first visit should load the full app
 - [ ] Test: audit flow should work completely offline (no external requests to break)
 
 ### 2.3 — Install prompt
 
-- [ ] Add subtle "Install this app" prompt for supported browsers
-- [ ] Keep it unobtrusive — no pushy modal, just a small notice
-- [ ] Respect dismissal — don't show again if declined
+- [x] Add subtle "Install this app" prompt for supported browsers
+- [x] Keep it unobtrusive — no pushy modal, just a small notice
+- [x] Respect dismissal — don't show again if declined
 
 ---
 
