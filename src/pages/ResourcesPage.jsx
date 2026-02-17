@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { resourceCategories } from '../data/comprehensiveResources'
 
 export default function ResourcesPage({ onClose }) {
   const [expandedCategory, setExpandedCategory] = useState(null)
+  const overlayRef = useRef(null)
+  const headingRef = useRef(null)
 
   const totalOrgs = resourceCategories.reduce((sum, cat) => sum + cat.resources.length, 0)
 
@@ -10,12 +12,48 @@ export default function ResourcesPage({ onClose }) {
     setExpandedCategory((prev) => (prev === id ? null : id))
   }
 
+  // Focus heading on mount
+  useEffect(() => {
+    headingRef.current?.focus()
+  }, [])
+
+  // Escape to close + focus trap
+  const handleKeyDown = useCallback((e) => {
+    if (e.key === 'Escape') {
+      onClose()
+      return
+    }
+
+    if (e.key === 'Tab') {
+      const focusable = overlayRef.current?.querySelectorAll(
+        'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
+      )
+      if (!focusable || focusable.length === 0) return
+
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        first.focus()
+      }
+    }
+  }, [onClose])
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [handleKeyDown])
+
   return (
-    <div className="fixed inset-0 z-40 bg-slate-50 overflow-y-auto">
+    <div ref={overlayRef} className="fixed inset-0 z-40 bg-slate-50 overflow-y-auto" role="dialog" aria-modal="true" aria-label="Crisis resources">
       <div className="max-w-3xl mx-auto px-4 py-8 pb-24">
         <div className="flex justify-between items-start mb-8">
           <div>
-            <h1 className="text-2xl font-bold text-slate-900">You are not alone</h1>
+            <h1 ref={headingRef} tabIndex={-1} className="text-2xl font-bold text-slate-900 outline-none">You are not alone</h1>
             <p className="text-slate-600 mt-2 leading-relaxed">
               {totalOrgs} organizations across {resourceCategories.length} categories. Every single one of these exists because someone cared enough to build it. Thousands of people wake up every day and go to work at these places specifically to help people in situations like yours.
             </p>
@@ -25,7 +63,7 @@ export default function ResourcesPage({ onClose }) {
             className="text-slate-400 hover:text-slate-600 transition-colors p-2 -mr-2 flex-shrink-0"
             aria-label="Close resources"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -45,6 +83,7 @@ export default function ResourcesPage({ onClose }) {
                 <button
                   onClick={() => toggleCategory(category.id)}
                   className="w-full text-left p-4 flex justify-between items-center hover:bg-slate-50 transition-colors"
+                  aria-expanded={isExpanded}
                 >
                   <div>
                     <h2 className="font-semibold text-slate-800">{category.title}</h2>
@@ -57,6 +96,7 @@ export default function ResourcesPage({ onClose }) {
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
+                    aria-hidden="true"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>

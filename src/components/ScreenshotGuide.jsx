@@ -8,9 +8,10 @@ export default function ScreenshotGuide() {
       <button
         onClick={() => setOpen(!open)}
         className="w-full text-left p-4 flex justify-between items-center hover:bg-slate-100 transition-colors"
+        aria-expanded={open}
       >
         <span className="font-medium text-slate-700 text-sm">How to take screenshots that hold up as evidence</span>
-        <span className="text-slate-400 text-xs">{open ? 'close' : 'read this'}</span>
+        <span className="text-slate-400 text-xs" aria-hidden="true">{open ? 'close' : 'read this'}</span>
       </button>
 
       {open && (

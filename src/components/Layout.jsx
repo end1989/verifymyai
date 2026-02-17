@@ -5,12 +5,15 @@ import InstallPrompt from './InstallPrompt'
 export default function Layout({ children, elevatedCrisis = false, onShowResources }) {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800">
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <QuickExit />
-      <main className="max-w-2xl mx-auto px-4 py-12 pb-24">
+      <main id="main-content" className="max-w-2xl mx-auto px-4 py-12 pb-24">
         {children}
       </main>
       <InstallPrompt />
-      <CrisisResources elevated={elevatedCrisis} onShowResources={onShowResources} />
+      <aside aria-label="Crisis resources">
+        <CrisisResources elevated={elevatedCrisis} onShowResources={onShowResources} />
+      </aside>
     </div>
   )
 }

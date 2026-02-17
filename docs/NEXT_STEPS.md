@@ -115,31 +115,31 @@ People using this tool may be doing so in situations where they need to disconne
 
 ### 3.1 — Keyboard navigation
 
-- [ ] Add skip-to-content link (hidden until focused)
-- [ ] Ensure full wizard flow is navigable via Tab/Shift+Tab/Enter
-- [ ] Test Emergency Exit with keyboard only (Esc already works — good)
+- [x] Add skip-to-content link (hidden until focused)
+- [x] Ensure full wizard flow is navigable via Tab/Shift+Tab/Enter
+- [x] Test Emergency Exit with keyboard only (Esc already works — good)
 - [ ] Document keyboard shortcuts if any exist beyond Esc
 
 ### 3.2 — Screen reader support
 
-- [ ] Add `aria-live` regions for dynamic content (finding results, severity changes, step transitions)
-- [ ] Add `sr-only` descriptive text where visual context is needed
-- [ ] Ensure all interactive elements have accessible names
+- [x] Add `aria-live` regions for dynamic content (finding results, severity changes, step transitions)
+- [x] Add `sr-only` descriptive text where visual context is needed
+- [x] Ensure all interactive elements have accessible names
 - [ ] Test with NVDA or VoiceOver
 
 ### 3.3 — Focus management
 
-- [ ] Trap focus inside ResourcesPage overlay when open
-- [ ] Move focus to new content on wizard step change
-- [ ] Return focus appropriately when dialogs/overlays close
-- [ ] Ensure CopyButton announces success to screen readers
+- [x] Trap focus inside ResourcesPage overlay when open
+- [x] Move focus to new content on wizard step change
+- [x] Return focus appropriately when dialogs/overlays close
+- [x] Ensure CopyButton announces success to screen readers
 
 ### 3.4 — Visual accessibility
 
-- [ ] Audit color contrast ratios (WCAG AA minimum, AAA preferred)
-- [ ] Ensure severity colors (green/yellow/red) aren't the only indicator — add icons or text labels
+- [x] Audit color contrast ratios (WCAG AA minimum, AAA preferred)
+- [x] Ensure severity colors (green/yellow/red) aren't the only indicator — add icons or text labels
 - [ ] Test at 200% zoom
-- [ ] Ensure touch targets are minimum 44x44px on mobile
+- [x] Ensure touch targets are minimum 44x44px on mobile
 
 ---
 

@@ -20,7 +20,7 @@ export default function CrisisResources({ elevated = false, onShowResources }) {
       {onShowResources && (
         <button
           onClick={onShowResources}
-          className="mt-2 text-xs text-slate-400 hover:text-slate-600 underline underline-offset-2 transition-colors"
+          className="mt-1 text-sm text-slate-400 hover:text-slate-600 underline underline-offset-2 transition-colors min-h-[44px] py-2"
         >
           Many more resources available
         </button>

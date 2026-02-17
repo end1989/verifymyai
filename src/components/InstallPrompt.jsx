@@ -45,13 +45,13 @@ export default function InstallPrompt() {
         <div className="flex gap-2 shrink-0">
           <button
             onClick={handleDismiss}
-            className="text-slate-400 hover:text-slate-600 px-2 py-1"
+            className="text-slate-400 hover:text-slate-600 px-3 py-2 min-h-[44px]"
           >
             Not now
           </button>
           <button
             onClick={handleInstall}
-            className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
+            className="bg-blue-600 text-white px-4 py-2 min-h-[44px] rounded hover:bg-blue-700"
           >
             Install
           </button>

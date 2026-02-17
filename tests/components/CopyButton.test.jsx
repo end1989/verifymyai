@@ -18,6 +18,6 @@ describe('CopyButton', () => {
   it('shows confirmation after copying', async () => {
     render(<CopyButton text="test prompt" />)
     fireEvent.click(screen.getByRole('button', { name: /copy/i }))
-    expect(await screen.findByText(/copied/i)).toBeInTheDocument()
+    expect(await screen.findByRole('button', { name: /copied/i })).toBeInTheDocument()
   })
 })

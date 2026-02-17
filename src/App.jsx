@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Layout from './components/Layout'
 import WizardNav from './components/WizardNav'
 import Landing from './pages/Landing'
@@ -17,6 +17,16 @@ function App() {
   const wizard = useWizard(STEPS)
   const audit = useAuditState()
   const [showResources, setShowResources] = useState(false)
+  const mainRef = useRef(null)
+
+  // Move focus to main content on wizard step change
+  useEffect(() => {
+    const heading = mainRef.current?.querySelector('h1, h2')
+    if (heading) {
+      heading.setAttribute('tabindex', '-1')
+      heading.focus({ preventScroll: false })
+    }
+  }, [wizard.currentStep])
 
   function handlePlatformSelect(platformId) {
     audit.setPlatform(platformId)
@@ -111,7 +121,9 @@ function App() {
           onBack={wizard.back}
           onStartOver={handleStartOver}
         />
-        {page[wizard.currentStep]}
+        <div ref={mainRef}>
+          {page[wizard.currentStep]}
+        </div>
       </Layout>
 
       {showResources && (

@@ -10,16 +10,21 @@ export default function CopyButton({ text }) {
   }
 
   return (
-    <button
-      onClick={handleCopy}
-      aria-label={copied ? 'Copied' : 'Copy prompt'}
-      className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-        copied
-          ? 'bg-green-100 text-green-700'
-          : 'bg-slate-800 text-white hover:bg-slate-700'
-      }`}
-    >
-      {copied ? 'Copied' : 'Copy prompt'}
-    </button>
+    <>
+      <button
+        onClick={handleCopy}
+        aria-label={copied ? 'Copied' : 'Copy prompt'}
+        className={`px-4 py-3 min-h-[44px] rounded-md text-sm font-medium transition-colors ${
+          copied
+            ? 'bg-green-100 text-green-700'
+            : 'bg-slate-800 text-white hover:bg-slate-700'
+        }`}
+      >
+        {copied ? 'Copied' : 'Copy prompt'}
+      </button>
+      <span role="status" aria-live="polite" className="sr-only">
+        {copied ? 'Prompt copied to clipboard' : ''}
+      </span>
+    </>
   )
 }
