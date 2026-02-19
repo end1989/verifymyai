@@ -156,29 +156,91 @@ We welcome feedback from practitioners. What would make this more useful in your
 
 ---
 
-## Contributing
-
-This project needs:
-
-- **Researchers**: platform-specific vulnerability analysis, detection methods, academic framing
-- **Developers**: accessibility improvements, internationalization, additional platform support, PWA/offline enhancements
-- **Designers**: user experience for people in crisis — every interaction needs to feel safe
-- **Writers**: content review, translation, plain-language editing for non-technical users
-- **Advocates**: feedback from DV/IPV professionals, clinical workflows, legal considerations
-- **Anyone who gets it**: if this resonates with you, help spread the word. Star the repo. Share the link. Write about it. Talk about it.
-
-### Development
+## Quick Start
 
 ```bash
 git clone https://github.com/end1989/verifymyai.git
 cd verifymyai
 npm install
 npm run dev        # http://localhost:5173
-npm test           # 44 tests
+npm test           # Run all tests
 npm run build      # Static output in dist/
 ```
 
-**Stack**: React 18 + Vite + Tailwind CSS. No backend. No database. No API keys. Just a static site that runs entirely in the browser.
+**Stack**: React 19 + Vite 7 + Tailwind CSS 4. No backend. No database. No API keys. Static SPA, runs entirely in the browser.
+
+## Project Structure
+
+```
+├── src/
+│   ├── App.jsx                  # Root — wizard navigation + audit state orchestration
+│   ├── main.jsx                 # Entry point
+│   ├── index.css                # Global styles (Tailwind)
+│   ├── pages/                   # One component per wizard step
+│   │   ├── Landing.jsx          #   Welcome / intro
+│   │   ├── PlatformPicker.jsx   #   Choose AI platform to audit
+│   │   ├── AuditFlow.jsx        #   Step-through audit prompts
+│   │   ├── Results.jsx          #   Findings + severity assessment
+│   │   ├── EvidenceKit.jsx      #   Screenshot upload + documentation
+│   │   ├── ActionSteps.jsx      #   What to do next
+│   │   └── ResourcesPage.jsx    #   70+ crisis organizations across 11 categories
+│   ├── components/              # Shared UI
+│   │   ├── QuickExit.jsx        #   Emergency Exit — shield button, Esc key, history scrub
+│   │   ├── CrisisResources.jsx  #   Always-visible hotlines (every page)
+│   │   ├── Layout.jsx           #   Page wrapper — renders CrisisResources + QuickExit
+│   │   ├── CopyButton.jsx       #   Copy prompt text to clipboard
+│   │   ├── PromptStep.jsx       #   Single audit prompt display
+│   │   ├── FindingCard.jsx      #   Individual finding with severity styling
+│   │   ├── DocumentationPrompt.jsx  # Evidence follow-up + screenshot upload
+│   │   ├── GenerateReportButton.jsx # Triggers ZIP/PDF export
+│   │   ├── ScreenshotGuide.jsx  #   How to capture evidence
+│   │   ├── PlatformCard.jsx     #   Platform selection tile
+│   │   ├── ProgressBar.jsx      #   Audit progress indicator
+│   │   ├── WizardNav.jsx        #   Back / Start Over navigation
+│   │   ├── TrustPact.jsx        #   Privacy commitment display
+│   │   ├── InstallPrompt.jsx    #   PWA install banner
+│   │   └── ThemeToggle.jsx      #   Dark / light mode switch
+│   ├── hooks/
+│   │   ├── useWizard.js         #   Step navigation (next/back/goTo/reset)
+│   │   └── useAuditState.js     #   Findings, records, severity, platform selection
+│   ├── data/                    # All content is data-driven, not hardcoded in components
+│   │   ├── prompts.js           #   Audit prompts keyed by tier (quick/full/deep) + platform
+│   │   ├── platforms.js         #   Platform definitions + attack surfaces
+│   │   ├── redFlags.js          #   Detection patterns + severity signals
+│   │   ├── resources.js         #   Core crisis hotlines
+│   │   ├── comprehensiveResources.js  # 70+ organizations across 11 categories
+│   │   ├── evidence.js          #   Evidence collection guidance
+│   │   └── cleanup.js           #   Platform-specific cleanup instructions
+│   └── utils/
+│       ├── generateReport.js    #   ZIP/PDF generation (jsPDF + JSZip, client-side only)
+│       └── exportFormats.js     #   Plain text + JSON export
+├── tests/                       # Mirrors src/ structure — Vitest + React Testing Library
+├── docs/                        # Project documentation
+│   ├── CONTRIBUTING.md          #   How to contribute
+│   ├── SECURITY.md              #   Vulnerability reporting (technical + behavioral)
+│   ├── PRIVACY.md               #   Zero-collection privacy policy
+│   ├── CODE_OF_CONDUCT.md       #   Contributor standards
+│   ├── PROMPT_PACKS.md          #   Standalone detection prompts for manual use
+│   ├── NEXT_STEPS.md            #   Roadmap and project phases
+│   └── plans/                   #   Design and implementation plans
+├── public/                      # Static assets (favicon, PWA icons, social preview)
+├── index.html                   # Shell HTML — tab title is "Safety Resource"
+├── vite.config.js               # Vite + Tailwind + PWA config
+└── eslint.config.js             # Linting rules
+```
+
+## Contributing
+
+See [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md) for setup, guidelines, and how to help.
+
+## Documentation
+
+- [Contributing Guide](docs/CONTRIBUTING.md) — how to contribute, what we need
+- [Roadmap & Next Steps](docs/NEXT_STEPS.md) — project phases and priorities
+- [Security Policy](docs/SECURITY.md) — reporting vulnerabilities (technical and behavioral)
+- [Privacy Policy](docs/PRIVACY.md) — zero tracking, zero data collection
+- [Code of Conduct](docs/CODE_OF_CONDUCT.md) — expectations for contributors
+- [Prompt Packs](docs/PROMPT_PACKS.md) — standalone detection prompts for manual use
 
 ---
 

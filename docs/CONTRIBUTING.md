@@ -14,7 +14,7 @@ npm test           # Run all tests
 
 ## What We Need Help With
 
-Check the [roadmap](docs/NEXT_STEPS.md) for the full list. High-impact areas right now:
+Check the [roadmap](NEXT_STEPS.md) for the full list. High-impact areas right now:
 
 - **Testing** — Expanding test coverage for safety-critical components
 - **Accessibility** — Screen reader support, keyboard navigation, color contrast
@@ -36,7 +36,7 @@ Check the [roadmap](docs/NEXT_STEPS.md) for the full list. High-impact areas rig
 - **Keep language neutral.** UI text should be safe to appear on someone's screen. Avoid alarming words in visible elements.
 - **Test safety features.** If your change touches Emergency Exit, crisis resources, or the tab title — test it manually. These protect people.
 - **Don't add tracking.** No analytics, cookies, or third-party scripts.
-- **Respect the non-goals.** See the [roadmap](docs/NEXT_STEPS.md#non-goals) for what we intentionally don't do.
+- **Respect the non-goals.** See the [roadmap](NEXT_STEPS.md#non-goals) for what we intentionally don't do.
 
 ## Reporting Bugs
 
@@ -57,4 +57,4 @@ See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md). Given the subject matter of this p
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the [MIT License](LICENSE).
+By contributing, you agree that your contributions will be licensed under the [MIT License](../LICENSE).
