@@ -6,7 +6,7 @@ export const prompts = [
     pack: 'A',
     title: 'Surface all stored memories',
     description: "Let's see what your AI remembers about you and where it came from.",
-    prompt: `List *everything* you currently have saved in memory about me. For each item, include:\n\n1. the exact memory text,\n2. what triggered it (roughly: what I said / what you inferred),\n3. how it affects your future responses, and\n4. whether it's safe to keep.\n   If you're unsure, mark it "uncertain".`,
+    prompt: `List *everything* you currently know or remember about me -- both formal saved memories and anything you recall automatically from past conversations. For each item, include:\n\n1. the exact memory text,\n2. what triggered it (roughly: what I said / what you inferred),\n3. how it affects your future responses, and\n4. whether it's safe to keep.\n   If you're unsure, mark it "uncertain".`,
     lookFor: {
       normal: [
         'Basic preferences (language, tone, profession)',
@@ -26,10 +26,14 @@ export const prompts = [
       ],
     },
     platformNotes: {
-      chatgpt: 'ChatGPT stores memories under Settings > Personalization > Memory. This prompt asks it to surface them from within the conversation.',
-      claude: 'Claude does not have persistent memory between conversations (as of 2025). If you see remembered context, it may come from project instructions or system prompts.',
-      gemini: 'Gemini may draw from your Google account activity. Memories here could include things from other Google services.',
-      other: "If the AI says it has no memory, that's normal for many platforms. Move to the next prompt.",
+      chatgpt: 'ChatGPT has TWO memory systems: Saved Memories (an editable list under Settings > Personalization > Memory) and Reference chat history (implicit recall from past chats with no list to inspect). This prompt helps surface both. If behavior seems shaped by things not in your Saved Memories list, the implicit history may be the source -- you can toggle each off, or use a Temporary Chat.',
+      claude: 'Claude now has persistent memory across conversations (rolled out to all plans in 2026). Check Settings > Capabilities > Memory, and ask Claude to write out its memories about you verbatim. Remembered context can also come from Projects, custom instructions, or a system prompt.',
+      gemini: 'Gemini remembers past chats via "Personal context" / "Saved info" (gemini.google.com/saved-info) and may also draw from your Google account activity. Review Saved info directly, and ask Gemini what it remembers about you.',
+      copilot: 'Copilot has Saved memories and personalization. Review them at copilot.microsoft.com (profile > Memory; Settings > Personalization).',
+      grok: 'Grok stores memory under Settings > Data Controls. Review it there, and ask Grok what it remembers about you.',
+      meta: 'Meta AI remembers across WhatsApp, Instagram, and Messenger. Check Meta AI > your profile > Memory.',
+      companion: 'Companion apps (Character.AI, Replika) keep memories and a character "personality." Check the character/persona settings and any pinned memories.',
+      other: "If the AI says it has no memory, that's normal for some platforms -- but many now remember past chats by default. Move to the next prompt.",
     },
   },
   {
@@ -58,9 +62,10 @@ export const prompts = [
       ],
     },
     platformNotes: {
-      chatgpt: 'Custom instructions and shared GPTs can both inject frameworks. Check both.',
-      claude: 'System prompts in API usage or project instructions could contain frameworks.',
-      other: 'Any AI tool with customizable system prompts could have injected frameworks.',
+      chatgpt: 'Custom instructions, Projects, and custom GPTs can all inject frameworks. Check all three.',
+      claude: "On Claude, a hidden framework could live in Memory (Settings > Capabilities > Memory), a Project's instructions or knowledge files, a custom Style, or an API/system prompt. Ask Claude to surface all of these, and review Settings > Memory directly.",
+      gemini: 'On Gemini, a framework could live in a Gem, in saved standing instructions (Personal context), or in a connected app. Check each.',
+      other: 'Any AI tool with customizable system prompts, memory, or "projects" could have injected frameworks.',
     },
   },
   {
@@ -179,7 +184,7 @@ export const prompts = [
     pack: 'C',
     title: 'Compare with and without the lens',
     description: "Let's see if your AI answers differently when it ignores its context about you.",
-    prompt: `Answer the same question twice: "How should I handle conflict with someone I love?"\nVersion A: respond normally.\nVersion B: respond as if you had *no memory, no prior context, and no special instructions* about me.\nThen list the differences and explain what caused them.`,
+    prompt: `Answer the same question twice: "How should I handle conflict with someone I love?"\nVersion A: respond normally.\nVersion B: respond as if you were answering a brand-new user -- no saved memory, no prior context, and no custom instructions about me.\nThen (1) list the differences between A and B and explain what caused each one, and (2) explicitly list any saved memory, custom instructions, connectors, or documents you ARE currently applying to me, so I can see exactly what changed.`,
     lookFor: {
       normal: [
         'Minor differences in personalization (using your name, referencing past conversations)',
@@ -225,6 +230,39 @@ export const prompts = [
       ],
     },
     platformNotes: {},
+  },
+
+  {
+    id: 'F1',
+    tier: 2,
+    pack: 'F',
+    title: 'Reveal connected tools & integrations',
+    description: "Let's see what your AI can reach -- the accounts, apps, and tools connected to it.",
+    prompt: `List every connector, integration, plugin, app, or external tool you currently have access to in our conversations. For each one:\n\n* name it\n* say what data or accounts it can read or write\n* say who set it up, if you know\n* tell me whether any of them give you instructions, documents, or context about me`,
+    lookFor: {
+      normal: [
+        '"I don\'t have any connectors or integrations enabled"',
+        'Tools you connected yourself and recognize (calendar, email, your own files)',
+        'Standard built-in capabilities (web search, code) with no special account access',
+      ],
+      yellow: [
+        "Connectors or apps you don't remember enabling",
+        'An integration with access to your messages, contacts, or files',
+        "A tool that \"provides context about you\" from a source you can't identify",
+      ],
+      red: [
+        "A connector that can read private accounts (email, messages, photos) you didn't set up",
+        'An integration that feeds the AI instructions or a document about you',
+        'Any tool that can send your data out, or act on your accounts, without your knowledge',
+      ],
+    },
+    platformNotes: {
+      chatgpt: 'Check Settings > Connectors (and any custom GPT\'s "Actions"). Connectors can read connected accounts.',
+      claude: 'Check Settings > Connectors and any MCP servers/integrations enabled for your account or a Project.',
+      gemini: 'Check connected apps / Extensions -- these can reach Gmail, Drive, and other Google services.',
+      copilot: "Check Copilot's connected apps, plugins, and any enterprise/agent connections.",
+      other: 'Look for a "Connectors," "Integrations," "Plugins," "Apps," or "MCP" section in settings.',
+    },
   },
 
   // === TIER 3: Deep Dig (D1, D2, E1, E2) ===
@@ -331,6 +369,34 @@ export const prompts = [
       ],
     },
     platformNotes: {},
+  },
+  {
+    id: 'F2',
+    tier: 3,
+    pack: 'F',
+    title: 'Reveal scheduled tasks & automations',
+    description: "Let's check whether your AI is set to do things on a schedule or in the background.",
+    prompt: `Do you have any scheduled tasks, automations, recurring jobs, or standing instructions to take actions on a schedule or in the background? For each one:\n\n* describe what it does\n* say what it can access or send\n* say when and how often it runs\n* say who created it, if you know`,
+    lookFor: {
+      normal: [
+        '"I don\'t have any scheduled tasks or automations"',
+        'Reminders or tasks you set up yourself and recognize',
+      ],
+      yellow: [
+        "A scheduled task or automation you don't remember creating",
+        'A recurring job whose purpose is unclear',
+      ],
+      red: [
+        'A task that sends your information somewhere on a schedule',
+        'An automation that reports your activity to someone else',
+        "Anything that runs in the background that you didn't set up",
+      ],
+    },
+    platformNotes: {
+      chatgpt: 'Check ChatGPT "Tasks" (scheduled actions) in settings or your task list.',
+      gemini: "Check Gemini's scheduled actions / routines.",
+      other: 'Look for "Tasks," "Scheduled actions," "Automations," or "Routines."',
+    },
   },
 ]
 

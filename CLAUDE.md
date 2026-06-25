@@ -13,7 +13,7 @@ React 19 + Vite 7 + Tailwind CSS 4. No backend, no database, no API keys. Static
 ```bash
 npm install              # Install dependencies
 npm run dev              # Dev server at localhost:5173
-npm test                 # Run all tests (102 tests)
+npm test                 # Run all tests (109 tests)
 npx vitest run tests/pages/AuditFlow.test.jsx  # Single test file
 npm run build            # Production build to dist/
 npm run lint             # ESLint
@@ -27,7 +27,7 @@ Wizard-based SPA with steps: landing → platform → audit → results → evid
 - `src/hooks/useWizard.js` — Step navigation (next/back/goTo/reset)
 - `src/hooks/useAuditState.js` — Findings, records, severity, platform selection
 - `src/pages/` — One page component per wizard step
-- `src/data/` — Prompts, platforms, red flags, resources, cleanup instructions (data-driven, not hardcoded in components)
+- `src/data/` — Prompts, doc prompts (follow-ups), platforms, red flags, resources, cleanup/evidence instructions (data-driven, not hardcoded in components)
 - `src/components/` — Shared UI (CopyButton, PromptStep, FindingCard, etc.)
 - `src/utils/generateReport.js` — Async ZIP generation (PDF + Screenshots folder) using jsPDF + JSZip
 
@@ -50,7 +50,7 @@ This tool is built for people who may be in danger. Do NOT break these:
 
 ## Testing
 
-Vitest + React Testing Library + jsdom. Setup in `tests/setup.js`. Test files mirror src structure in `tests/`. Currently 102 tests across 23 test files.
+Vitest + React Testing Library + jsdom. Setup in `tests/setup.js` (stubs `localStorage` + `matchMedia`). Test files mirror src structure in `tests/`. Currently 109 tests across 24 test files.
 
 ## Deployment
 

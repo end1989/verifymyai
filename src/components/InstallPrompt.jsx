@@ -2,14 +2,12 @@ import { useState, useEffect } from 'react'
 
 export default function InstallPrompt() {
   const [deferredPrompt, setDeferredPrompt] = useState(null)
-  const [dismissed, setDismissed] = useState(false)
+  // Initialize from storage during render (lazy init) instead of in an effect,
+  // so we don't trigger a synchronous cascading re-render.
+  const [dismissed, setDismissed] = useState(() => Boolean(localStorage.getItem('pwa-install-dismissed')))
 
   useEffect(() => {
-    // Don't show if user previously dismissed
-    if (localStorage.getItem('pwa-install-dismissed')) {
-      setDismissed(true)
-      return
-    }
+    if (dismissed) return
 
     function handleBeforeInstall(e) {
       e.preventDefault()
@@ -18,7 +16,7 @@ export default function InstallPrompt() {
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstall)
     return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstall)
-  }, [])
+  }, [dismissed])
 
   function handleInstall() {
     if (!deferredPrompt) return

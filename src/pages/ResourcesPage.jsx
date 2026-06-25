@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { resourceCategories } from '../data/comprehensiveResources'
 
-export default function ResourcesPage({ onClose }) {
-  const [expandedCategory, setExpandedCategory] = useState(null)
+export default function ResourcesPage({ onClose, initialCategory = null }) {
+  const [expandedCategory, setExpandedCategory] = useState(initialCategory)
   const overlayRef = useRef(null)
   const headingRef = useRef(null)
+  const categoryButtonRefs = useRef({})
 
   const totalOrgs = resourceCategories.reduce((sum, cat) => sum + cat.resources.length, 0)
 
@@ -12,10 +13,16 @@ export default function ResourcesPage({ onClose }) {
     setExpandedCategory((prev) => (prev === id ? null : id))
   }
 
-  // Focus heading on mount
+  // On mount: if opened to a specific category, focus + scroll to it; otherwise focus the heading.
   useEffect(() => {
-    headingRef.current?.focus()
-  }, [])
+    const target = initialCategory && categoryButtonRefs.current[initialCategory]
+    if (target) {
+      target.focus()
+      target.scrollIntoView({ block: 'center' })
+    } else {
+      headingRef.current?.focus()
+    }
+  }, [initialCategory])
 
   // Escape to close + focus trap
   const handleKeyDown = useCallback((e) => {
@@ -81,6 +88,7 @@ export default function ResourcesPage({ onClose }) {
             return (
               <div key={category.id} className="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden bg-white dark:bg-slate-800">
                 <button
+                  ref={(el) => { categoryButtonRefs.current[category.id] = el }}
                   onClick={() => toggleCategory(category.id)}
                   className="w-full text-left p-4 flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
                   aria-expanded={isExpanded}
