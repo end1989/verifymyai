@@ -50,7 +50,7 @@ export const resourceCategories = [
       { name: 'Anti-Violence Project (AVP)', phone: '1-212-714-1141', url: 'https://avp.org', text: null, note: '24/7 bilingual hotline. Supports LGBTQ and HIV-affected survivors of violence.' },
       { name: 'GLBT National Help Center', phone: '1-800-234-7336', url: 'https://www.lgbthotline.org', text: null, note: 'Free, confidential. Peer support and local resources.' },
       { name: 'SAGE', phone: '1-877-360-5428', url: 'https://www.sageusa.org', text: null, note: 'For LGBTQ+ elders. Advocacy, services, and community.' },
-      { name: 'Northwest Network', phone: '1-206-568-7777', url: 'https://www.nwnetwork.org', text: null, note: 'Bisexual, trans, lesbian, and gay survivors of abuse. Community-based.' },
+      { name: 'The Network/La Red', phone: null, url: 'https://tnlr.org', text: null, note: 'Support for LGBTQ+ survivors of partner abuse. Hotline, safety planning, and advocacy (hotline number on their site).' },
     ],
   },
   {
@@ -65,7 +65,7 @@ export const resourceCategories = [
       { name: 'Crisis Text Line', phone: null, url: 'https://www.crisistextline.org', text: 'Text HOME to 741741', note: 'Text-based. Often preferred by younger people. Free, confidential.' },
       { name: 'Covenant House', phone: '1-800-388-3888', url: 'https://www.covenanthouse.org', text: null, note: 'For homeless and trafficked youth. Shelter and services.' },
       { name: 'StopBullying.gov', phone: null, url: 'https://www.stopbullying.gov', text: null, note: 'Information and resources on bullying prevention.' },
-      { name: 'Teen Line', phone: '1-800-852-8336', url: 'https://teenlineonline.org', text: 'Text TEEN to 839863', note: 'Teens helping teens. Evenings. A young person will answer.' },
+      { name: 'Teen Line', phone: '1-800-852-8336', url: 'https://teenline.org', text: 'Text TEEN to 839863', note: 'Teens helping teens. Evenings. A young person will answer.' },
     ],
   },
   {
@@ -79,7 +79,7 @@ export const resourceCategories = [
       { name: 'Casa de Esperanza', phone: '1-651-772-1611', url: 'https://casadeesperanza.org', text: null, note: 'National Latinx network for healthy families and communities. Bilingual.' },
       { name: 'National Latin@ Network', phone: null, url: 'https://www.nationallatinonetwork.org', text: null, note: 'Addressing domestic violence in Latinx communities. Training and resources.' },
       { name: 'Asian Pacific Institute on Gender-Based Violence', phone: null, url: 'https://www.api-gbv.org', text: null, note: 'Analysis, policy, and resources for Asian and Pacific Islander communities.' },
-      { name: 'API Safety Center', phone: null, url: 'https://www.apisafetycenter.org', text: null, note: 'Culturally specific advocacy and direct services for API survivors.' },
+      { name: 'API Chaya', phone: null, url: 'https://apichaya.org', text: null, note: 'Support for Asian, South Asian, Pacific Islander, and all survivors of gender-based violence and trafficking. Helpline and advocacy.' },
       { name: 'Womens Center for Advancement', phone: null, url: 'https://www.wcaomaha.org', text: null, note: 'Services with cultural competency focus. Legal, counseling, emergency support.' },
     ],
   },
@@ -92,8 +92,8 @@ export const resourceCategories = [
       { name: 'Love Is Respect', phone: '1-866-331-9474', url: 'https://www.loveisrespect.org/for-someone-else/', text: null, note: 'What to do if you think someone you know is in an abusive relationship.' },
       { name: 'NAMI (National Alliance on Mental Illness)', phone: '1-800-950-6264', url: 'https://www.nami.org', text: 'Text NAMI to 741741', note: 'For anyone affected by mental illness. Support groups for family members.' },
       { name: 'Al-Anon / Alateen', phone: '1-888-425-2666', url: 'https://al-anon.org', text: null, note: 'For families and friends of people with alcohol problems. Meetings everywhere.' },
-      { name: 'SAMHSA National Helpline', phone: '1-800-662-4357', url: 'https://www.samhsa.gov/find-help', text: null, note: 'Free referrals for substance abuse and mental health. 24/7, 365 days.' },
-      { name: 'DomesticShelters.org', phone: null, url: 'https://www.domesticshelters.org/resources/helping-someone-else', text: null, note: 'Articles and guides specifically for people trying to help a loved one.' },
+      { name: 'SAMHSA National Helpline', phone: '1-800-662-4357', url: 'https://www.samhsa.gov/find-help/helplines/national-helpline', text: null, note: 'Free referrals for substance abuse and mental health. 24/7, 365 days.' },
+      { name: 'DomesticShelters.org', phone: null, url: 'https://www.domesticshelters.org/articles', text: null, note: 'Articles and guides, including how to help a loved one experiencing abuse.' },
     ],
   },
   {
@@ -102,11 +102,11 @@ export const resourceCategories = [
     description: 'If someone is using technology to monitor, control, or manipulate you, these organizations specialize in exactly that.',
     resources: [
       { name: 'Safety Net by NNEDV', phone: null, url: 'https://www.techsafety.org', text: null, note: 'The leading resource on technology-facilitated abuse. Guides, tools, safety planning.' },
-      { name: 'Clinic to End Tech Abuse (CETA)', phone: null, url: 'https://www.ceta.tech.cornell.edu', text: null, note: 'Cornell Tech research clinic. Cutting-edge resources on tech abuse.' },
-      { name: 'Operation Safe Escape', phone: null, url: 'https://www.operationsafeescape.org', text: null, note: 'Helps survivors secure their technology, accounts, and devices.' },
+      { name: 'Clinic to End Tech Abuse (CETA)', phone: null, url: 'https://ceta.tech.cornell.edu', text: null, note: 'Cornell Tech research clinic. Cutting-edge resources on tech abuse.' },
+      { name: 'Operation Safe Escape', phone: null, url: 'https://safeescape.org', text: null, note: 'Helps survivors secure their technology, accounts, and devices.' },
       { name: 'Cyber Civil Rights Initiative', phone: '1-844-878-2274', url: 'https://cybercivilrights.org', text: null, note: 'Non-consensual porn, online harassment, and digital abuse. Crisis helpline.' },
       { name: 'Electronic Frontier Foundation', phone: null, url: 'https://www.eff.org/issues/privacy', text: null, note: 'Digital privacy rights. Surveillance self-defense guides.' },
-      { name: 'Tech Safety App', phone: null, url: 'https://www.techsafety.org/resources-survivors', text: null, note: 'Step-by-step guides for securing phones, accounts, and smart home devices.' },
+      { name: 'Tech Safety for Survivors (Safety Net)', phone: null, url: 'https://www.techsafety.org/resources-survivors', text: null, note: 'Step-by-step guides for securing phones, accounts, and smart home devices.' },
     ],
   },
   {
@@ -127,7 +127,7 @@ export const resourceCategories = [
     title: 'Financial Independence & Safety',
     description: 'Financial control is one of the most common forms of abuse. These organizations can help you build independence.',
     resources: [
-      { name: 'Purple Purse (Allstate Foundation)', phone: null, url: 'https://www.purplepurse.com', text: null, note: 'Financial abuse awareness. Tools and resources for financial safety planning.' },
+      { name: 'Allstate Foundation (formerly Purple Purse)', phone: null, url: 'https://www.allstatecorporation.com/the-allstate-foundation/relationship-abuse.aspx', text: null, note: 'Financial abuse awareness. Tools and resources for financial safety planning.' },
       { name: 'National Endowment for Financial Education', phone: null, url: 'https://www.nefe.org', text: null, note: 'Free financial literacy resources. No strings, no products to sell.' },
       { name: 'FreeFrom', phone: null, url: 'https://www.freefrom.org', text: null, note: 'Economic justice for survivors. Financial safety planning, savings matching.' },
       { name: 'National Foundation for Credit Counseling', phone: '1-800-388-2227', url: 'https://www.nfcc.org', text: null, note: 'Free or low-cost financial counseling. Debt management, budgeting.' },

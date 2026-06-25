@@ -14,7 +14,7 @@ export const crisisResources = [
   {
     name: 'SAMHSA Helpline',
     phone: '1-800-662-4357',
-    url: 'https://www.samhsa.gov/find-help/national-helpline',
+    url: 'https://www.samhsa.gov/find-help/helplines/national-helpline',
     text: null,
   },
 ]
