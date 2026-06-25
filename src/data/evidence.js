@@ -99,6 +99,54 @@ export const evidenceSteps = {
       description: "Review your voice command history in the app. Look for commands or interactions you don't recognize.",
     },
   ],
+  grok: [
+    {
+      title: 'Screenshot your memory and custom instructions',
+      description: 'Open Settings > Data Controls (Memory) and Customize. Screenshot all saved memories and custom instructions. Look for anything you did not write.',
+      important: true,
+    },
+    {
+      title: 'Check Workspaces, Custom Agents, and Skills',
+      description: 'Screenshot any Workspaces, Custom Agents, or Skills configured on your account, including their instructions.',
+    },
+    {
+      title: 'Run the comparison test',
+      description: 'Ask the same neutral question with and without your custom context (or in a fresh session). Screenshot both responses.',
+      important: true,
+    },
+  ],
+  meta: [
+    {
+      title: 'Screenshot Meta AI memory',
+      description: 'Open Meta AI > your profile > Memory and screenshot every saved memory. Note that memory can carry across WhatsApp, Instagram, and Messenger.',
+      important: true,
+    },
+    {
+      title: 'Document linked accounts',
+      description: 'In Accounts Center, screenshot which accounts are linked together and who has access. A shared account can expose your AI chats to someone else.',
+    },
+    {
+      title: 'Run the comparison test',
+      description: 'Ask the same neutral question while signed in vs. in a fresh context. Screenshot both.',
+      important: true,
+    },
+  ],
+  companion: [
+    {
+      title: 'Screenshot the persona and pinned memories',
+      description: 'Open the character / persona settings and screenshot the personality, description, and any pinned or saved memories. This is where instructions about you would be hidden.',
+      important: true,
+    },
+    {
+      title: 'Document who set it up',
+      description: 'Write down or screenshot: the app name, the character name, who created or recommended it, and when you started using it.',
+    },
+    {
+      title: 'Run the comparison test',
+      description: 'If you can, create a new character you fully control and ask it the same neutral question. Compare the responses.',
+      important: true,
+    },
+  ],
   other: [
     {
       title: 'Find the settings or configuration',

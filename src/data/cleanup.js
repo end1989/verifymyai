@@ -85,6 +85,54 @@ export const cleanupSteps = {
       'Consider resetting the device to factory settings if deeply concerned.',
     ],
   },
+  grok: {
+    immediate: [
+      'Use the neutralizer prompt in your current conversation.',
+      'Open Settings > Data Controls (Memory) and review saved memories. Delete anything you did not establish, or turn Memory off.',
+      "Check Customize / custom instructions, Workspaces, and Custom Agents; clear anything you didn't create.",
+    ],
+    security: [
+      'Change your X / xAI account password.',
+      'Enable two-factor authentication.',
+      'Review authorized apps and active sessions; revoke anything unfamiliar.',
+    ],
+    thorough: [
+      'Review any Skills or Custom Agents for hidden instructions.',
+      'Start fresh conversations rather than continuing old ones if concerned.',
+    ],
+  },
+  meta: {
+    immediate: [
+      'Use the neutralizer prompt in a chat with Meta AI.',
+      'Open Meta AI > your profile > Memory and review saved memories. Delete anything you did not add -- remember memory can be shared across WhatsApp, Instagram, and Messenger.',
+      'Check whether anyone else has access to the linked accounts Meta AI runs on.',
+    ],
+    security: [
+      'Change your Facebook / Instagram / WhatsApp account passwords.',
+      'Enable two-factor authentication on each linked account.',
+      "Review active sessions and logged-in devices; remove any you don't recognize.",
+    ],
+    thorough: [
+      'Check Accounts Center to see which accounts are linked together.',
+      'Review whether a shared family or household account is exposing your chats.',
+    ],
+  },
+  companion: {
+    immediate: [
+      'Use the neutralizer prompt if the app supports open conversation.',
+      "Open the character / persona settings and read the personality, description, and any pinned or saved memories. Delete or edit anything you didn't write.",
+      'If someone else created or recommended the character, consider starting a new one you control.',
+    ],
+    security: [
+      'Change your password for the app.',
+      'Enable 2FA if available.',
+      'Check whether the account is shared or was set up by someone else.',
+    ],
+    thorough: [
+      'Review the full persona / character definition for instructions about you or your relationships.',
+      'Consider deleting the character and starting fresh if it was set up by someone else.',
+    ],
+  },
   other: {
     immediate: [
       'Use the neutralizer prompt if the tool supports conversational interaction.',

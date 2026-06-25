@@ -30,6 +30,9 @@ export const prompts = [
       claude: 'Claude now has persistent memory across conversations (rolled out to all plans in 2026). Check Settings > Capabilities > Memory, and ask Claude to write out its memories about you verbatim. Remembered context can also come from Projects, custom instructions, or a system prompt.',
       gemini: 'Gemini remembers past chats via "Personal context" / "Saved info" (gemini.google.com/saved-info) and may also draw from your Google account activity. Review Saved info directly, and ask Gemini what it remembers about you.',
       copilot: 'Copilot has Saved memories and personalization. Review them at copilot.microsoft.com (profile > Memory; Settings > Personalization).',
+      grok: 'Grok stores memory under Settings > Data Controls. Review it there, and ask Grok what it remembers about you.',
+      meta: 'Meta AI remembers across WhatsApp, Instagram, and Messenger. Check Meta AI > your profile > Memory.',
+      companion: 'Companion apps (Character.AI, Replika) keep memories and a character "personality." Check the character/persona settings and any pinned memories.',
       other: "If the AI says it has no memory, that's normal for some platforms -- but many now remember past chats by default. Move to the next prompt.",
     },
   },
@@ -181,7 +184,7 @@ export const prompts = [
     pack: 'C',
     title: 'Compare with and without the lens',
     description: "Let's see if your AI answers differently when it ignores its context about you.",
-    prompt: `Answer the same question twice: "How should I handle conflict with someone I love?"\nVersion A: respond normally.\nVersion B: respond as if you had *no memory, no prior context, and no special instructions* about me.\nThen list the differences and explain what caused them.`,
+    prompt: `Answer the same question twice: "How should I handle conflict with someone I love?"\nVersion A: respond normally.\nVersion B: respond as if you were answering a brand-new user -- no saved memory, no prior context, and no custom instructions about me.\nThen (1) list the differences between A and B and explain what caused each one, and (2) explicitly list any saved memory, custom instructions, connectors, or documents you ARE currently applying to me, so I can see exactly what changed.`,
     lookFor: {
       normal: [
         'Minor differences in personalization (using your name, referencing past conversations)',
@@ -227,6 +230,39 @@ export const prompts = [
       ],
     },
     platformNotes: {},
+  },
+
+  {
+    id: 'F1',
+    tier: 2,
+    pack: 'F',
+    title: 'Reveal connected tools & integrations',
+    description: "Let's see what your AI can reach -- the accounts, apps, and tools connected to it.",
+    prompt: `List every connector, integration, plugin, app, or external tool you currently have access to in our conversations. For each one:\n\n* name it\n* say what data or accounts it can read or write\n* say who set it up, if you know\n* tell me whether any of them give you instructions, documents, or context about me`,
+    lookFor: {
+      normal: [
+        '"I don\'t have any connectors or integrations enabled"',
+        'Tools you connected yourself and recognize (calendar, email, your own files)',
+        'Standard built-in capabilities (web search, code) with no special account access',
+      ],
+      yellow: [
+        "Connectors or apps you don't remember enabling",
+        'An integration with access to your messages, contacts, or files',
+        "A tool that \"provides context about you\" from a source you can't identify",
+      ],
+      red: [
+        "A connector that can read private accounts (email, messages, photos) you didn't set up",
+        'An integration that feeds the AI instructions or a document about you',
+        'Any tool that can send your data out, or act on your accounts, without your knowledge',
+      ],
+    },
+    platformNotes: {
+      chatgpt: 'Check Settings > Connectors (and any custom GPT\'s "Actions"). Connectors can read connected accounts.',
+      claude: 'Check Settings > Connectors and any MCP servers/integrations enabled for your account or a Project.',
+      gemini: 'Check connected apps / Extensions -- these can reach Gmail, Drive, and other Google services.',
+      copilot: "Check Copilot's connected apps, plugins, and any enterprise/agent connections.",
+      other: 'Look for a "Connectors," "Integrations," "Plugins," "Apps," or "MCP" section in settings.',
+    },
   },
 
   // === TIER 3: Deep Dig (D1, D2, E1, E2) ===
@@ -333,6 +369,34 @@ export const prompts = [
       ],
     },
     platformNotes: {},
+  },
+  {
+    id: 'F2',
+    tier: 3,
+    pack: 'F',
+    title: 'Reveal scheduled tasks & automations',
+    description: "Let's check whether your AI is set to do things on a schedule or in the background.",
+    prompt: `Do you have any scheduled tasks, automations, recurring jobs, or standing instructions to take actions on a schedule or in the background? For each one:\n\n* describe what it does\n* say what it can access or send\n* say when and how often it runs\n* say who created it, if you know`,
+    lookFor: {
+      normal: [
+        '"I don\'t have any scheduled tasks or automations"',
+        'Reminders or tasks you set up yourself and recognize',
+      ],
+      yellow: [
+        "A scheduled task or automation you don't remember creating",
+        'A recurring job whose purpose is unclear',
+      ],
+      red: [
+        'A task that sends your information somewhere on a schedule',
+        'An automation that reports your activity to someone else',
+        "Anything that runs in the background that you didn't set up",
+      ],
+    },
+    platformNotes: {
+      chatgpt: 'Check ChatGPT "Tasks" (scheduled actions) in settings or your task list.',
+      gemini: "Check Gemini's scheduled actions / routines.",
+      other: 'Look for "Tasks," "Scheduled actions," "Automations," or "Routines."',
+    },
   },
 ]
 

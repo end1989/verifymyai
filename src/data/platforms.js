@@ -28,6 +28,27 @@ export const platforms = [
     exportPath: 'Microsoft account privacy dashboard; review/delete Saved memories in Personalization',
   },
   {
+    id: 'grok',
+    name: 'Grok (xAI)',
+    description: 'Memory, custom instructions, Workspaces, Custom Agents, Skills',
+    settingsPath: 'Settings > Customize / Data Controls (Memory)',
+    exportPath: 'Settings > Data Controls (manage/export); screenshot the memory list',
+  },
+  {
+    id: 'meta',
+    name: 'Meta AI',
+    description: 'Memory across chats and linked accounts (WhatsApp, Instagram, Messenger)',
+    settingsPath: 'Meta AI app or in-chat > profile > Memory',
+    exportPath: 'Memory > Manage (review/delete); screenshot the memory list',
+  },
+  {
+    id: 'companion',
+    name: 'AI Companion Apps',
+    description: 'Custom personas, character personality/description, pinned memories (Character.AI, Replika, etc.)',
+    settingsPath: 'Character / Persona settings; Pinned memories',
+    exportPath: 'Screenshot the persona, personality definition, and pinned/saved memories',
+  },
+  {
     id: 'voice',
     name: 'Voice Assistants',
     description: 'Routines, skills, linked accounts (Alexa, Siri, Google)',
