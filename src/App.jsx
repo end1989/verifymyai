@@ -113,7 +113,7 @@ function App() {
     <>
       <Layout
         elevatedCrisis={audit.severity === 'red'}
-        onShowResources={() => setShowResources(true)}
+        onShowResources={(categoryId) => setShowResources(typeof categoryId === 'string' ? categoryId : true)}
       >
         <WizardNav
           currentStep={wizard.currentStep}
@@ -127,7 +127,10 @@ function App() {
       </Layout>
 
       {showResources && (
-        <ResourcesPage onClose={() => setShowResources(false)} />
+        <ResourcesPage
+          initialCategory={typeof showResources === 'string' ? showResources : null}
+          onClose={() => setShowResources(false)}
+        />
       )}
     </>
   )

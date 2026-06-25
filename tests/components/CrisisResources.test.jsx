@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react'
-import { describe, it, expect } from 'vitest'
+import { render, screen, fireEvent } from '@testing-library/react'
+import { describe, it, expect, vi } from 'vitest'
 import CrisisResources from '../../src/components/CrisisResources'
 
 describe('CrisisResources', () => {
@@ -8,9 +8,18 @@ describe('CrisisResources', () => {
     expect(screen.getAllByText(/help is available/i).length).toBeGreaterThan(0)
   })
 
-  it('always shows hotline numbers without needing a click', () => {
-    render(<CrisisResources />)
-    expect(screen.getByText('1-800-799-7233')).toBeInTheDocument()
+  it('shows directed help categories without needing a click', () => {
+    render(<CrisisResources onShowResources={() => {}} />)
+    expect(screen.getByText(/immediate crisis/i)).toBeInTheDocument()
+    expect(screen.getByText('Women')).toBeInTheDocument()
+    expect(screen.getByText(/legal/i)).toBeInTheDocument()
+  })
+
+  it('opens resources to a specific category when a chip is clicked', () => {
+    const onShowResources = vi.fn()
+    render(<CrisisResources onShowResources={onShowResources} />)
+    fireEvent.click(screen.getByText('Women'))
+    expect(onShowResources).toHaveBeenCalledWith('women')
   })
 
   it('uses elevated styling when elevated prop is true', () => {

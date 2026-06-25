@@ -1,63 +1,59 @@
-import { useState } from 'react'
-import { crisisResources } from '../data/resources'
 import ThemeToggle from './ThemeToggle'
 import QuickExit from './QuickExit'
 
-export default function CrisisResources({ elevated = false, onShowResources }) {
-  const [expanded, setExpanded] = useState(false)
+// The always-visible bar offers *direction* rather than bare phone numbers:
+// each chip opens the full resource list scrolled to the category it names, where
+// every hotline has a label + a line of context. (Numbers live there, not here.)
+const QUICK_CATEGORIES = [
+  { id: 'crisis', label: 'Immediate crisis' },
+  { id: 'women', label: 'Women' },
+  { id: 'men', label: 'Men' },
+  { id: 'lgbtq', label: 'LGBTQ+' },
+  { id: 'youth', label: 'Young people' },
+  { id: 'legal', label: 'Legal' },
+]
 
+export default function CrisisResources({ elevated = false, onShowResources }) {
   const barBg = elevated
     ? 'bg-amber-50 dark:bg-amber-950 border-amber-200 dark:border-amber-800'
     : 'bg-white/95 dark:bg-slate-800/95 border-slate-200 dark:border-slate-700 backdrop-blur-sm'
 
   return (
     <div className={`fixed bottom-0 left-0 right-0 z-50 border-t ${barBg}`}>
-      {/* Main footer bar */}
       <div className="max-w-5xl mx-auto px-2 sm:px-3 flex items-center min-h-[52px] gap-2">
         {/* Left: theme toggle */}
         <div className="shrink-0" data-print-hide>
           <ThemeToggle />
         </div>
 
-        {/* Center: hotlines */}
-        <div className="flex-1 flex items-center justify-center gap-1 sm:gap-3 flex-wrap text-xs sm:text-sm min-w-0">
-          <span className={`font-medium shrink-0 ${elevated ? 'text-amber-800 dark:text-amber-300' : 'text-slate-600 dark:text-slate-300'}`}>
+        {/* Center: help is available + directed category links */}
+        <div className="flex-1 min-w-0 flex items-center gap-2">
+          <span className={`font-medium shrink-0 text-xs sm:text-sm ${elevated ? 'text-amber-800 dark:text-amber-300' : 'text-slate-700 dark:text-slate-200'}`}>
             Help is available
           </span>
-          <span className="text-slate-300 dark:text-slate-600 hidden sm:inline" aria-hidden="true">|</span>
-          {crisisResources.map((r, i) => (
-            <span key={r.name} className="flex items-center gap-1 shrink-0">
-              {r.phone ? (
-                <a href={`tel:${r.phone.replace(/-/g, '')}`} className="text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-slate-50 font-medium whitespace-nowrap">
-                  {r.phone}
-                </a>
-              ) : (
-                <span className="text-slate-500 dark:text-slate-400 whitespace-nowrap">{r.text}</span>
-              )}
-              {i < crisisResources.length - 1 && (
-                <span className="text-slate-300 dark:text-slate-600 ml-1" aria-hidden="true">&middot;</span>
-              )}
-            </span>
-          ))}
-          {onShowResources && (
+          <span className="text-slate-300 dark:text-slate-600 hidden sm:inline shrink-0" aria-hidden="true">|</span>
+          <nav
+            aria-label="Find help by who it is for"
+            className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap py-1"
+          >
+            <span className="text-xs text-slate-500 dark:text-slate-400 shrink-0 hidden sm:inline">Find the right help:</span>
+            {QUICK_CATEGORIES.map((c) => (
+              <button
+                key={c.id}
+                onClick={() => onShowResources?.(c.id)}
+                className="shrink-0 px-2.5 py-1.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+                aria-label={`Resources: ${c.label}`}
+              >
+                {c.label}
+              </button>
+            ))}
             <button
-              onClick={onShowResources}
-              className="text-xs text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 underline underline-offset-2 transition-colors hidden sm:inline"
+              onClick={() => onShowResources?.()}
+              className="shrink-0 px-2.5 py-1.5 text-xs font-medium text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 underline underline-offset-2 transition-colors"
             >
               More
             </button>
-          )}
-          {/* Mobile expand */}
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className="min-h-[44px] min-w-[44px] flex items-center justify-center text-slate-400 dark:text-slate-500 sm:hidden"
-            aria-expanded={expanded}
-            aria-label={expanded ? 'Collapse resources' : 'Expand resources'}
-          >
-            <svg className={`w-4 h-4 transition-transform ${expanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-            </svg>
-          </button>
+          </nav>
         </div>
 
         {/* Right: emergency exit */}
@@ -65,29 +61,6 @@ export default function CrisisResources({ elevated = false, onShowResources }) {
           <QuickExit />
         </div>
       </div>
-
-      {/* Expanded detail (mobile only) */}
-      {expanded && (
-        <div className="sm:hidden px-3 pb-3 space-y-2 border-t border-slate-100 dark:border-slate-800 pt-2">
-          {crisisResources.map((r) => (
-            <div key={r.name} className="text-xs text-slate-600 dark:text-slate-300">
-              <a href={r.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-900 dark:hover:text-slate-50">
-                {r.name}
-              </a>
-              {r.phone && <a href={`tel:${r.phone.replace(/-/g, '')}`} className="ml-2 text-slate-800 dark:text-slate-100 font-medium">{r.phone}</a>}
-              {r.text && <span className="ml-2 text-slate-500 dark:text-slate-400">{r.text}</span>}
-            </div>
-          ))}
-          {onShowResources && (
-            <button
-              onClick={onShowResources}
-              className="text-xs text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 underline underline-offset-2 transition-colors min-h-[44px] py-1"
-            >
-              Many more resources available
-            </button>
-          )}
-        </div>
-      )}
     </div>
   )
 }
