@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { prompts } from '../data/prompts'
 import PromptStep from '../components/PromptStep'
 import DocumentationPrompt from '../components/DocumentationPrompt'
-import { docPrompts, fallbackDocPrompt } from '../components/DocumentationPrompt'
+import { docPrompts, fallbackDocPrompt } from '../data/docPrompts'
 import ProgressBar from '../components/ProgressBar'
 
 export default function AuditFlow({ platformId, tier, onComplete, onFinding, onRecord }) {
