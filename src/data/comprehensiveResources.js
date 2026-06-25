@@ -127,7 +127,7 @@ export const resourceCategories = [
     title: 'Financial Independence & Safety',
     description: 'Financial control is one of the most common forms of abuse. These organizations can help you build independence.',
     resources: [
-      { name: 'Allstate Foundation (formerly Purple Purse)', phone: null, url: 'https://www.allstatecorporation.com/the-allstate-foundation/relationship-abuse.aspx', text: null, note: 'Financial abuse awareness. Tools and resources for financial safety planning.' },
+      { name: 'Financial Abuse Resources (The Hotline)', phone: null, url: 'https://www.thehotline.org/resources/financialabuse/', text: null, note: 'What financial and economic abuse looks like, plus steps toward financial safety and independence. (Replaces the discontinued Purple Purse / Allstate Foundation program.)' },
       { name: 'National Endowment for Financial Education', phone: null, url: 'https://www.nefe.org', text: null, note: 'Free financial literacy resources. No strings, no products to sell.' },
       { name: 'FreeFrom', phone: null, url: 'https://www.freefrom.org', text: null, note: 'Economic justice for survivors. Financial safety planning, savings matching.' },
       { name: 'National Foundation for Credit Counseling', phone: '1-800-388-2227', url: 'https://www.nfcc.org', text: null, note: 'Free or low-cost financial counseling. Debt management, budgeting.' },

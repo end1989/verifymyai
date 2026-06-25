@@ -1,0 +1,24 @@
+name: Link check (resource directory)
+
+# A dead link to a support org can fail someone in crisis. Run weekly (not just on
+# PRs) so external link rot is caught over time, and allow manual runs on demand.
+on:
+  schedule:
+    - cron: '0 13 * * 1' # Mondays 13:00 UTC
+  workflow_dispatch:
+  push:
+    paths:
+      - 'src/data/resources.js'
+      - 'src/data/comprehensiveResources.js'
+      - 'scripts/check-links.mjs'
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # No install needed: the script imports local data and uses built-in fetch.
+      - run: node scripts/check-links.mjs
