@@ -1,6 +1,6 @@
 # Privacy Policy — VerifyMyAI
 
-**Last updated:** February 2026
+**Last updated:** June 2026
 
 ## Summary
 

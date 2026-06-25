@@ -1,6 +1,6 @@
 # VerifyMyAI — Roadmap & Next Steps
 
-> Last updated: 2026-02-17
+> Last updated: 2026-06-24
 
 This document maps out everything between where we are now and where this project needs to be — organized by priority, grouped into phases, and written so anyone picking up a task knows exactly what to do and why it matters.
 
@@ -11,12 +11,12 @@ This document maps out everything between where we are now and where this projec
 **Core app: complete and functional.**
 
 - 7-page wizard audit flow (landing → platform → audit → results → evidence → actions)
-- 12 targeted prompts across 3 tiers (Quick Check / Full Audit / Deep Dig)
-- 6 platform targets (ChatGPT, Claude, Gemini, Copilot, Voice Assistants, Other)
+- 14 targeted prompts across 3 tiers (Quick Check / Full Audit / Deep Dig)
+- 9 platform targets (ChatGPT, Claude, Gemini, Copilot, Grok, Meta AI, AI companion apps, Voice Assistants, Other)
 - Evidence pipeline: screenshot upload, PDF generation, ZIP packaging with embedded images
 - Emergency Exit: shield button, Esc key, history scrubbing, sessionStorage wipe
 - 72+ crisis organizations across 11 categories
-- 44 tests passing
+- 109 tests passing
 - Deployed to Cloudflare Pages (verifymyai.org)
 - GitHub repo live (github.com/end1989/verifymyai)
 

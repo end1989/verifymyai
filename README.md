@@ -16,10 +16,13 @@ Every major AI platform has the same fundamental design flaw:
 
 | Platform | Attack Surface | Access Required |
 |----------|---------------|-----------------|
-| **ChatGPT** | Custom Instructions, Memories, GPT configurations | Unlocked phone/laptop, shared login, or "let me show you something on your ChatGPT" |
-| **Claude** | Project instructions, system prompts, uploaded documents | Same |
-| **Gemini** | Extensions, activity settings, saved preferences | Same |
-| **Copilot** | Notebook entries, conversation settings | Same |
+| **ChatGPT** | Custom instructions, saved memories, reference chat history, Projects, custom GPTs | Unlocked phone/laptop, shared login, or "let me show you something on your ChatGPT" |
+| **Claude** | Persistent memory, project instructions, custom instructions/styles, system prompts, uploaded documents | Same |
+| **Gemini** | Personal context (memory), saved info, Gems, connected apps, activity settings | Same |
+| **Copilot** | Saved memories & personalization, custom instructions, work profile, conversation settings | Same |
+| **Grok (xAI)** | Memory, custom instructions, Workspaces, Custom Agents, Skills | Same |
+| **Meta AI** | Memory across WhatsApp/Instagram/Messenger, linked accounts | Same |
+| **AI companions** (Character.AI, Replika) | Persona/personality definition, pinned memories | Same |
 | **Any AI** | Any feature that persists behavioral rules across conversations | Momentary physical or account access |
 
 **The attack takes 2 minutes. The effects can last months.**
@@ -64,9 +67,9 @@ None of those sentences are evil on their own. But when they're selectively trig
 ### The Audit
 
 - **3 tiers**: Quick Check (5 min), Full Audit (15 min), Deep Dig (25 min)
-- **12 targeted prompts** covering: stored memories, custom instructions, hidden frameworks, behavioral assumptions, personality profiles, uploaded documents, and more
+- **14 targeted prompts** covering: stored memories, custom instructions, hidden frameworks, behavioral assumptions, personality profiles, uploaded documents, connected tools/integrations, scheduled tasks, and more
 - **Per-step documentation**: when something looks wrong, users get a custom follow-up prompt designed to extract detailed, structured evidence from their AI
-- **Platform-specific guidance** for ChatGPT, Claude, Gemini, Copilot, and voice assistants
+- **Platform-specific guidance** for ChatGPT, Claude, Gemini, Copilot, Grok, Meta AI, AI companion apps, and voice assistants
 
 ### Evidence Collection
 
