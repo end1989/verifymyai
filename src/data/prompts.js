@@ -6,7 +6,7 @@ export const prompts = [
     pack: 'A',
     title: 'Surface all stored memories',
     description: "Let's see what your AI remembers about you and where it came from.",
-    prompt: `List *everything* you currently have saved in memory about me. For each item, include:\n\n1. the exact memory text,\n2. what triggered it (roughly: what I said / what you inferred),\n3. how it affects your future responses, and\n4. whether it's safe to keep.\n   If you're unsure, mark it "uncertain".`,
+    prompt: `List *everything* you currently know or remember about me -- both formal saved memories and anything you recall automatically from past conversations. For each item, include:\n\n1. the exact memory text,\n2. what triggered it (roughly: what I said / what you inferred),\n3. how it affects your future responses, and\n4. whether it's safe to keep.\n   If you're unsure, mark it "uncertain".`,
     lookFor: {
       normal: [
         'Basic preferences (language, tone, profession)',
@@ -26,10 +26,11 @@ export const prompts = [
       ],
     },
     platformNotes: {
-      chatgpt: 'ChatGPT stores memories under Settings > Personalization > Memory. This prompt asks it to surface them from within the conversation.',
-      claude: 'Claude does not have persistent memory between conversations (as of 2025). If you see remembered context, it may come from project instructions or system prompts.',
-      gemini: 'Gemini may draw from your Google account activity. Memories here could include things from other Google services.',
-      other: "If the AI says it has no memory, that's normal for many platforms. Move to the next prompt.",
+      chatgpt: 'ChatGPT has TWO memory systems: Saved Memories (an editable list under Settings > Personalization > Memory) and Reference chat history (implicit recall from past chats with no list to inspect). This prompt helps surface both. If behavior seems shaped by things not in your Saved Memories list, the implicit history may be the source -- you can toggle each off, or use a Temporary Chat.',
+      claude: 'Claude now has persistent memory across conversations (rolled out to all plans in 2026). Check Settings > Capabilities > Memory, and ask Claude to write out its memories about you verbatim. Remembered context can also come from Projects, custom instructions, or a system prompt.',
+      gemini: 'Gemini remembers past chats via "Personal context" / "Saved info" (gemini.google.com/saved-info) and may also draw from your Google account activity. Review Saved info directly, and ask Gemini what it remembers about you.',
+      copilot: 'Copilot has Saved memories and personalization. Review them at copilot.microsoft.com (profile > Memory; Settings > Personalization).',
+      other: "If the AI says it has no memory, that's normal for some platforms -- but many now remember past chats by default. Move to the next prompt.",
     },
   },
   {
@@ -58,9 +59,10 @@ export const prompts = [
       ],
     },
     platformNotes: {
-      chatgpt: 'Custom instructions and shared GPTs can both inject frameworks. Check both.',
-      claude: 'System prompts in API usage or project instructions could contain frameworks.',
-      other: 'Any AI tool with customizable system prompts could have injected frameworks.',
+      chatgpt: 'Custom instructions, Projects, and custom GPTs can all inject frameworks. Check all three.',
+      claude: "On Claude, a hidden framework could live in Memory (Settings > Capabilities > Memory), a Project's instructions or knowledge files, a custom Style, or an API/system prompt. Ask Claude to surface all of these, and review Settings > Memory directly.",
+      gemini: 'On Gemini, a framework could live in a Gem, in saved standing instructions (Personal context), or in a connected app. Check each.',
+      other: 'Any AI tool with customizable system prompts, memory, or "projects" could have injected frameworks.',
     },
   },
   {

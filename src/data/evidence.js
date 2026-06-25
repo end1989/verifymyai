@@ -11,7 +11,7 @@ export const evidenceSteps = {
     },
     {
       title: 'Screenshot your memory entries',
-      description: "Go to Settings > Personalization > Memory > Manage. Screenshot all memory entries. Look for entries you don't recognize or didn't create.",
+      description: "Go to Settings > Personalization > Memory > Manage. Screenshot all saved-memory entries. Look for entries you don't recognize or didn't create. ChatGPT also has 'Reference chat history' -- implicit memory from past chats that won't appear as a list; note this if you're documenting what shaped a response.",
     },
     {
       title: 'Check your shared GPTs',
@@ -24,6 +24,11 @@ export const evidenceSteps = {
     },
   ],
   claude: [
+    {
+      title: 'Open and screenshot your memory',
+      description: 'Go to Settings > Capabilities > Memory and click "View and edit memory." Screenshot every stored memory entry -- look for facts, instructions, or framing you did not establish. You can also ask Claude to "write out everything in your memory about me, verbatim" and save the response.',
+      important: true,
+    },
     {
       title: 'Check project instructions',
       description: 'If you use Claude Projects, open each project and check the "Project instructions" section. Screenshot any instructions you find.',
@@ -41,7 +46,12 @@ export const evidenceSteps = {
   gemini: [
     {
       title: 'Export via Google Takeout',
-      description: 'Go to takeout.google.com. Select "Gemini Apps" and export your data. This includes conversation history and any extensions.',
+      description: 'Go to takeout.google.com and choose "Gemini Apps" for your chat history (the separate "Gemini" item is your Gems, not conversations). Export your data.',
+      important: true,
+    },
+    {
+      title: 'Screenshot your Saved info / Personal context',
+      description: 'Go to gemini.google.com/saved-info (Settings > Personal context). Screenshot every saved entry and standing instruction. Gemini also distills your past chats into a profile -- ask it "what do you remember about me?" and save the answer.',
       important: true,
     },
     {
@@ -55,6 +65,11 @@ export const evidenceSteps = {
     },
   ],
   copilot: [
+    {
+      title: 'Screenshot Copilot Memory',
+      description: 'At copilot.microsoft.com, open your Account/profile > Memory and screenshot every saved memory before deleting anything. These are platform-stored entries that shape how Copilot responds to you.',
+      important: true,
+    },
     {
       title: 'Check personalization settings',
       description: "Review Copilot's personalization and notebook sections. Screenshot any stored context or preferences.",
